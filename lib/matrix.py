@@ -4,4 +4,3 @@ class Matrix:
     def __init__(self, list):
         self.array = list
         self.shape = list.shape
-
