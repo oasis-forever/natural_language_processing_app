@@ -72,5 +72,11 @@ class TestMatrix(unittest.TestCase):
     def test_exponential(self):
         np.alltrue(np.array([[1.00000000e+00, 2.71828183e+00, 7.38905610e+00], [2.00855369e+01, 5.45981500e+01, 1.48413159e+02], [4.03428793e+02, 1.09663316e+03, 2.98095799e+03]]) == self.matrix.exponential())
 
+    def test_rand(self):
+        self.assertEqual((3, 3), self.matrix.rand(3, 3).shape)
+
+    def test_seeded_rand(self):
+        self.assertEqual(0.8637599855700829, self.matrix.seeded_rand(29))
+
 if __name__ == "__main__":
     unittest.main()

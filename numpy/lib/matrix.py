@@ -31,3 +31,9 @@ class Matrix:
     def exponential(self):
         return np.exp(self.array)
 
+    def rand(self, v, h):
+        return np.random.rand(v, h)
+
+    def seeded_rand(self, seed):
+        np.random.seed(seed)
+        return np.random.rand()
