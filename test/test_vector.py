@@ -17,5 +17,13 @@ class TestVector(unittest.TestCase):
     def test_slice(self):
         np.alltrue(np.array([0, 1, 2]) == self.vector.array[:3])
 
+    def test_sum(self):
+        list = np.array([6, 7, 8, 9, 10, 11])
+        np.alltrue(np.array([6, 8, 10, 12, 14, 16]) == self.vector.sum(list))
+
+    def test_multiply(self):
+        list = np.array([6, 7, 8, 9, 10, 11])
+        np.alltrue(np.array([0, 7, 16, 27, 40, 55]) == self.vector.multiply(list))
+
 if __name__ == "__main__":
     unittest.main()
