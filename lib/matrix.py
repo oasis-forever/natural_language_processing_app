@@ -1,9 +1,9 @@
 import numpy as np
 
 class Matrix:
-    def __init__(self, list):
-        self.array = list
-        self.shape = list.shape
+    def __init__(self, array):
+        self.array = array
+        self.shape = array.shape
 
     def sum(self, num):
         return self.array + num
@@ -11,5 +11,5 @@ class Matrix:
     def multiply(self, num):
         return self.array * num
 
-    def dot_product(self, list):
-        return np.dot(self.array, list)
+    def dot_product(self, array):
+        return np.dot(self.array, array)
