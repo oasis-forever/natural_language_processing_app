@@ -41,5 +41,13 @@ class TestVector(unittest.TestCase):
         array = np.array([6, 7, 8, 9, 10, 11])
         self.assertEqual(145, self.vector.dot_product(array))
 
+    def test_vertically_stack(self):
+        array = np.array([6, 7, 8, 9, 10, 11])
+        np.alltrue(np.array([[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11]]) == self.vector.v_stack(array))
+
+    def test_horizontally_stack(self):
+        array = np.array([6, 7, 8, 9, 10, 11])
+        np.alltrue(np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) == self.vector.h_stack(array))
+
 if __name__ == "__main__":
     unittest.main()

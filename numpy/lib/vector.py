@@ -17,3 +17,9 @@ class Vector:
 
     def dot_product(self, array):
         return np.dot(self.array, array)
+
+    def v_stack(self, array):
+        np.vstack((self.array, array))
+
+    def h_stack(self, array):
+        np.hstack((self.array, array))
