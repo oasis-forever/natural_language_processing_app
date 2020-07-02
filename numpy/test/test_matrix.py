@@ -17,6 +17,30 @@ class TestMatrix(unittest.TestCase):
     def test_slice(self):
         np.alltrue(np.array([[1, 2], [4, 5]]) == self.matrix.array[:2, 1:])
 
+    def test_vertica_max(self):
+        np.alltrue(np.array([6, 7, 8]) == self.matrix.v_max)
+
+    def test_horizontal_max(self):
+        np.alltrue(np.array([2, 5, 8]) == self.matrix.h_max)
+
+    def test_vertica_min(self):
+        np.alltrue(np.array([0, 1, 2]) == self.matrix.v_min)
+
+    def test_horizontal_min(self):
+        np.alltrue(np.array([0, 3, 6]) == self.matrix.h_min)
+
+    def test_vertica_argmax(self):
+        np.alltrue(np.array([2, 2, 2]) == self.matrix.v_argmax)
+
+    def test_horizontal_argmax(self):
+        np.alltrue(np.array([2, 2, 2]) == self.matrix.h_argmax)
+
+    def test_vertica_argmin(self):
+        np.alltrue(np.array([0, 0, 0]) == self.matrix.v_argmin)
+
+    def test_horizontal_argmin(self):
+        np.alltrue(np.array([0, 0, 0]) == self.matrix.h_argmin)
+
     def test_arr_sum(self):
         array = np.array([[9, 10, 11], [12, 13, 14], [15, 16, 17]])
         np.alltrue(np.array([[9, 11, 13], [15, 17, 19], [21, 23, 25]]) == self.matrix.sum(array))
