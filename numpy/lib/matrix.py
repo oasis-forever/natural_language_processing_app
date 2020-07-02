@@ -27,3 +27,7 @@ class Matrix:
 
     def np_mean(self):
         return np.mean(self.array)
+
+    def exponential(self):
+        return np.exp(self.array)
+

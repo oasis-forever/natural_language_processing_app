@@ -69,5 +69,8 @@ class TestMatrix(unittest.TestCase):
     def test_np_mean(self):
         self.assertEqual(4, self.matrix.np_mean())
 
+    def test_exponential(self):
+        np.alltrue(np.array([[1.00000000e+00, 2.71828183e+00, 7.38905610e+00], [2.00855369e+01, 5.45981500e+01, 1.48413159e+02], [4.03428793e+02, 1.09663316e+03, 2.98095799e+03]]) == self.matrix.exponential())
+
 if __name__ == "__main__":
     unittest.main()
