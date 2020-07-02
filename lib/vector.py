@@ -11,3 +11,5 @@ class Vector:
     def multiply(self, list):
         return self.array * list
 
+    def dot_product(self, list):
+        return np.dot(self.array, list)

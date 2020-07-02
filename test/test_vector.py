@@ -25,5 +25,9 @@ class TestVector(unittest.TestCase):
         list = np.array([6, 7, 8, 9, 10, 11])
         np.alltrue(np.array([0, 7, 16, 27, 40, 55]) == self.vector.multiply(list))
 
+    def test_dot_product(self):
+        list = np.array([6, 7, 8, 9, 10, 11])
+        self.assertEqual(145, self.vector.dot_product(list))
+
 if __name__ == "__main__":
     unittest.main()
