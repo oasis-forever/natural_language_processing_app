@@ -21,3 +21,9 @@ class Matrix:
 
     def dot_product(self, array):
         return np.dot(self.array, array)
+
+    def np_sum(self):
+        return np.sum(self.array)
+
+    def np_mean(self):
+        return np.mean(self.array)

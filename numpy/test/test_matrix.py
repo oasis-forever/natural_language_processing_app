@@ -63,5 +63,11 @@ class TestMatrix(unittest.TestCase):
         vector = np.array([9, 8, 7])
         np.alltrue(np.array([22, 94, 166]) == self.matrix.dot_product(vector))
 
+    def test_np_sum(self):
+        self.assertEqual(36, self.matrix.np_sum())
+
+    def test_np_mean(self):
+        self.assertEqual(4, self.matrix.np_mean())
+
 if __name__ == "__main__":
     unittest.main()
