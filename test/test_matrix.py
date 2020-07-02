@@ -25,5 +25,11 @@ class TestMatrix(unittest.TestCase):
         list = np.array([[9, 10, 11], [12, 13, 14], [15, 16, 17]])
         np.alltrue(np.array([[0, 10, 22], [36, 52, 70], [90, 112, 136]]) == self.matrix.multiply(list))
 
+    def test_broadcasting_sum(self):
+        np.alltrue(np.array([[10, 11, 12], [13, 14, 15], [16, 17, 18]]) == self.matrix.sum(10))
+
+    def test_broadcasting_multiply(self):
+        np.alltrue(np.array([[0, 10, 20], [30, 40, 50], [60, 70, 80]]) == self.matrix.multiply(10))
+
 if __name__ == "__main__":
     unittest.main()
