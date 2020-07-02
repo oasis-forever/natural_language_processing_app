@@ -10,3 +10,6 @@ class Matrix:
 
     def multiply(self, num):
         return self.array * num
+
+    def dot_product(self, list):
+        return np.dot(self.array, list)
