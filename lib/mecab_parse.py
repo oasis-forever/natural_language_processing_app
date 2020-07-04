@@ -18,3 +18,12 @@ class Mecab:
         while node:
             print(node.feature)
             node = node.next
+
+    def tokenize(self, text):
+        tokens = []
+        node = self.tagger.parseToNode(text)
+        while node:
+            if node.surface != "":
+                tokens.append(node.surface)
+            node = node.next
+        return tokens
