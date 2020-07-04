@@ -8,12 +8,13 @@ import contextlib
 class TestVector(unittest.TestCase):
     def setUp(self):
         self.mecab = Mecab()
+        self.text = "私はサーバーサイドエンジニアです"
 
     def test_parse(self):
-        self.assertEqual("私\tワタクシ\tワタクシ\t私-代名詞\t代名詞\t\t\t0\nは\tワ\tハ\tは\t助詞-係助詞\t\t\t\nサーバー\tサーバー\tサーバー\tサーバー-server\t名詞-普通名詞-一般\t\t\t0,1\nサイド\tサイド\tサイド\tサイド-side\t名詞-普通名詞-一般\t\t\t1\nエンジニア\tエンジニア\tエンジニア\tエンジニア-engineer\t名詞-普通名詞-一般\t\t\t3\nです\tデス\tデス\tです\t助動詞\t助動詞-デス\t終止形-一般\t\nEOS\n", self.mecab.parse("私はサーバーサイドエンジニアです"))
+        self.assertEqual("私\tワタクシ\tワタクシ\t私-代名詞\t代名詞\t\t\t0\nは\tワ\tハ\tは\t助詞-係助詞\t\t\t\nサーバー\tサーバー\tサーバー\tサーバー-server\t名詞-普通名詞-一般\t\t\t0,1\nサイド\tサイド\tサイド\tサイド-side\t名詞-普通名詞-一般\t\t\t1\nエンジニア\tエンジニア\tエンジニア\tエンジニア-engineer\t名詞-普通名詞-一般\t\t\t3\nです\tデス\tデス\tです\t助動詞\t助動詞-デス\t終止形-一般\t\nEOS\n", self.mecab.parse(self.text))
 
     def _calFUT1(self):
-        return self.mecab.parse_to_node_surface("私はサーバーサイドエンジニアです")
+        return self.mecab.parse_to_node_surface(self.text)
 
     def test_parse_to_node_surface(self):
         from io import StringIO
@@ -26,7 +27,7 @@ class TestVector(unittest.TestCase):
         self.assertEqual("\n私\nは\nサーバー\nサイド\nエンジニア\nです\n\n", actual)
 
     def _calFUT2(self):
-        return self.mecab.parse_to_node_feature("私はサーバーサイドエンジニアです")
+        return self.mecab.parse_to_node_feature(self.text)
 
     def test_parse_to_node_feature(self):
         from io import StringIO
