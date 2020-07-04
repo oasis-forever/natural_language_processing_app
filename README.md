@@ -22,3 +22,16 @@
 ```bash
 $ pip install -r requirements.txt
 ```
+
+* Install mecab to execute command line
+  * Debian / Ubuntu
+
+  ```bash
+  $ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
+  ```
+
+  * MacOS
+
+  ```bash
+  $ brew install mecab mecab-ipadic-utf8
+  ```

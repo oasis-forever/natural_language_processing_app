@@ -6,3 +6,4 @@ mecab-python3==1.0.0
 neologdn==0.4
 Keras==2.4.3
 gensim==3.8.3
+unidic-lite==1.0.6
