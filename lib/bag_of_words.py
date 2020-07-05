@@ -1,3 +1,5 @@
+from collections import Counter
+
 class BagOfWords:
     def __init__(self):
         pass
@@ -17,3 +19,12 @@ class BagOfWords:
                 index = vocabulary[token]
                 bow[i][index] += 1
         return vocabulary, bow
+
+    def calc_bow_counter_ver(self, tokenized_texts):
+        # Build vocabulary
+        counts = [Counter(tokenized_text) for tokenized_text in tokenized_texts]
+        sum_counts = sum(counts, Counter())
+        vocabulary = sum_counts.keys()
+        # Build Bag of Words Feature Vector
+        bow = [[count[word] for word in vocabulary] for count in counts]
+        return bow

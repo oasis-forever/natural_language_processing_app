@@ -10,14 +10,14 @@ class TestVector(unittest.TestCase):
     def setUp(self):
         self.mecab = Mecab()
         self.bag_of_words = BagOfWords()
-
-    def test_calc_bow(self):
-        texts = [
+        self.texts = [
             "私は私のことが好きなあなたが好きです",
             "私はラーメンが好きです",
             "富士山は日本一高い山です",
         ]
-        tokenized_texts = [self.mecab.tokenize(text) for text in texts]
+
+    def test_calc_bow(self):
+        tokenized_texts = [self.mecab.tokenize(text) for text in self.texts]
         vocabulary, bow = self.bag_of_words.calc_bow(tokenized_texts)
         self.assertEqual(
             {
@@ -39,6 +39,18 @@ class TestVector(unittest.TestCase):
             },
             vocabulary
         )
+        self.assertEqual(
+            [
+                [2, 1, 1, 1, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+                [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 1, 1, 1]
+            ],
+            bow
+        )
+
+    def test_calc_bow_counter_ver(self):
+        tokenized_texts = [self.mecab.tokenize(text) for text in self.texts]
+        bow = self.bag_of_words.calc_bow_counter_ver(tokenized_texts)
         self.assertEqual(
             [
                 [2, 1, 1, 1, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
