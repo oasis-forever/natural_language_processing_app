@@ -3,8 +3,6 @@ import sys
 sys.path.append("../lib")
 from bag_of_words import BagOfWords
 from mecab_parse import Mecab
-import MeCab
-import contextlib
 
 class TestVector(unittest.TestCase):
     def setUp(self):
