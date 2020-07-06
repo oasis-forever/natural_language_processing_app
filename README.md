@@ -26,6 +26,20 @@
 
 ## 3. Setup
 
+* If you have not install `lzma` in your environment, an error will occur in importing `pandas` as follows.
+
+```bash
+/home/username/.pyenv/versions/3.8.1/lib/python3.8/site-packages/pandas/compat/__init__.py:117: UserWarning: Could not import the lzma module. Your installed Python is incomplete. Attempting to use lzma compression will result in a RuntimeError.
+  warnings.warn(msg)
+  ```
+To avoid it, install `lzma` in advance before you install Python.
+
+For Debian / Ubuntu
+
+```bash
+sudo apt install liblzma-dev
+```
+
 * Install all required liblaries
 
 ```bash
@@ -33,14 +47,15 @@ $ pip install -r requirements.txt
 ```
 
 * Install mecab to execute command line
-  * Debian / Ubuntu
 
-  ```bash
-  $ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
-  ```
+For Debian / Ubuntu
 
-  * MacOS
+```bash
+$ sudo apt install mecab libmecab-dev mecab-ipadic-utf8
+```
 
-  ```bash
-  $ brew install mecab mecab-ipadic-utf8
-  ```
+For MacOS
+
+```bash
+$ brew install mecab mecab-ipadic-utf8
+```
