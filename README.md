@@ -13,7 +13,16 @@
 
 ## 2. Reference
 
-[15Stepで踏破 自然言語処理アプリケーション開発入門 (StepUp!選書)](https://bookmeter.com/books/14438482)
+* [『15Stepで踏破 自然言語処理アプリケーション開発入門 (StepUp!選書)』](https://bookmeter.com/books/14438482)
+* [NumPy v1.19 Manual](https://numpy.org/doc/stable/)
+* [SciPy](https://www.scipy.org/docs.html)
+* [pandas](https://pandas.pydata.org/docs/)
+* [scikit-laern](https://scikit-learn.org/stable/user_guide.html)
+* [mecab](https://taku910.github.io/mecab/)
+* [neologd](https://github.com/neologd/mecab-ipadic-neologd)
+* [Regexp.ja](https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp.ja)
+* [Keras](https://keras.io/guides/)
+* [gensim](https://radimrehurek.com/gensim/auto_examples/index.html)
 
 ## 3. Setup
 
