@@ -1,9 +1,10 @@
 import MeCab
 
+tagger = MeCab.Tagger()
+
 def tokenize(text):
-    tokens = []
-    tagger = MeCab.Tagger()
     node = tagger.parseToNode(text)
+    tokens = []
     while node:
         if node.surface != "":
             tokens.append(node.surface)
