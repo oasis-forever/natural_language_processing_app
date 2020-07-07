@@ -2,6 +2,7 @@ from os.path import dirname, join, normpath
 import MeCab
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 
 BASE_DIR = normpath(dirname("__file__"))
@@ -27,18 +28,19 @@ class DialogueAgent:
         return tokens
 
     def train(self):
-        vectorizer = CountVectorizer(tokenizer=self._tokenize)
-        # Load vocbulary and make feature vectors
-        bow = vectorizer.fit_transform(self.texts)
-        classifier = SVC()
-        classifier.fit(bow, self.labels)
-        # Sustain as instance variables
-        self.vectorizer = vectorizer
-        self.classifier = classifier
+        # Unify vectorizer and classifier into pipeline
+        pipeline = Pipeline([
+            ("vectorizer", CountVectorizer(tokenizer=self._tokenize)),
+            ("classifier", SVC())
+        ])
+        # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()
+        pipeline.fit(self.texts, self.labels)
+        # Sustain as an instance variable
+        self.pipeline = pipeline
 
     def predict(self, texts):
-        bow = self.vectorizer.transform(texts)
-        return self.classifier.predict(bow)
+        # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
+        return self.pipeline.predict(texts)
 
     def reply(self, input_text, replies):
         self.train()
