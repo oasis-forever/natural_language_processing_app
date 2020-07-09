@@ -1,6 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 import tokenizer
 
 class TestTokenizer(unittest.TestCase):
@@ -12,7 +13,7 @@ class TestTokenizer(unittest.TestCase):
         self.assertEqual(["本", "を", "読ん", "だ"], tokenizer.tokenize(self.text1))
 
     def test_tokenize2(self):
-        self.assertEqual(["本", "を", "読む", "まし", "た"], tokenizer.tokenize(self.text2))
+        self.assertEqual(["本", "を", "読み", "まし", "た"], tokenizer.tokenize(self.text2))
 
     def test_lemmatize1(self):
         self.assertEqual(["本", "を", "読む", "た"], tokenizer.lemmatize(self.text1))

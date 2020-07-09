@@ -1,6 +1,8 @@
 from os.path import dirname, join, normpath
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
+import sys
+sys.path.append("./concern")
 from tokenizer import tokenize
 
 class ExtractBowFromTrainingData:

@@ -1,3 +1,5 @@
+import sys
+sys.path.append("./concern")
 from tokenizer import tokenize
 import neologdn
 import unicodedata

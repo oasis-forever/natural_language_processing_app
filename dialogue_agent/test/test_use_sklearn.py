@@ -1,9 +1,9 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from use_sklearn import UseSkLearn
 import numpy as np
-
 
 class TestVector(unittest.TestCase):
     def setUp(self):
