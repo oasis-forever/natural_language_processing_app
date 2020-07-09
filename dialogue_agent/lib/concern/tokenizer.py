@@ -37,3 +37,15 @@ def remove_stop_words(text):
                 result.append(token)
         node = node.next
     return result
+
+def remove_auxiliary_verbs_and_particles(text):
+    node = tagger.parseToNode(text)
+    result = []
+    while node:
+        features = node.feature.split(",")
+        if features[0] != "BOS/EOS":
+                if features[0] not in ["助詞", "助動詞"]:
+                    token = features[7] if features[7] != "*" else node.surface
+                    result.append(token)
+        node = node.next
+    return result

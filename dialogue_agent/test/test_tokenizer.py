@@ -22,10 +22,16 @@ class TestTokenizer(unittest.TestCase):
         self.assertEqual(["本", "を", "読む", "ます", "た"], tokenizer.lemmatize(self.text2))
 
     def test_remove_stop_words1(self):
-        self.assertEqual(["本", "読む"], tokenizer.remove_stop_words(self.text1))
+        self.assertEqual(["本", "を", "読む", "た"], tokenizer.remove_stop_words(self.text1))
 
     def test_remove_stop_words2(self):
-        self.assertEqual(["本", "読む"], tokenizer.remove_stop_words(self.text2))
+        self.assertEqual(["本", "を", "読む", "ます", "た"], tokenizer.remove_stop_words(self.text2))
+
+    def test_remove_auxiliary_verbs_and_particles1(self):
+        self.assertEqual(["本", "読む"], tokenizer.remove_auxiliary_verbs_and_particles(self.text1))
+
+    def test_remove_auxiliary_verbs_and_particles2(self):
+        self.assertEqual(["本", "読む"], tokenizer.remove_auxiliary_verbs_and_particles(self.text2))
 
 if __name__ == "__main__":
     unittest.main()
