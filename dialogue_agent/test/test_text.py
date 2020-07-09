@@ -2,13 +2,13 @@ import unittest
 import sys
 sys.path.append("../lib")
 from text import Text
-import contextlib
 
 class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
         self.text1 = Text("[初めてのTensorFlow]は定価2200円+税です")
         self.text2 = Text("[初めての　TensorFlow]は定価２２００円+税です")
         self.text3 = Text("[初めての TensorFlow]は定価2200円+税です")
+        self.text4 = Text("㈱自然言語処理研究")
 
     def test_raw_tokenize_text1(self):
         # FIXME: mecab-python3 does not provide a propper word devider, so even single-byte digits are counted as an element of list.
@@ -26,6 +26,10 @@ class TestDialogueAgent(unittest.TestCase):
 
     def test_neologdn_normalized_token_text3(self):
         self.assertEqual(self.text1.raw_tokenize(), self.text3.neologdn_normalized_token())
+
+    def test_unicodedata_normalized_text(self):
+        text = "(株)自然言語処理研究"
+        self.assertEqual(text, self.text4.unicodedata_normalized_text(text))
 
 if __name__ == "__main__":
     unittest.main()
