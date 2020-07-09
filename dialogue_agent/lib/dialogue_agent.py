@@ -4,6 +4,8 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
+import neologdn
+import unicodedata
 
 BASE_DIR = normpath(dirname("__file__"))
 
@@ -18,14 +20,22 @@ class DialogueAgent:
         labels = training_data["label"]
         return texts, labels
 
+    def _preprocess(self, text):
+        text = unicodedata.normalize("NFKC", text)
+        text = neologdn.normalize(text)
+        text = text.lower()
+        return text
+
     def _tokenize(self, text):
-        node = self.tagger.parseToNode(text)
-        tokens = []
+        node = self.tagger.parseToNode(self._preprocess(text))
+        result = []
         while node:
-            if node.surface != "":
-                tokens.append(node.surface)
+            features = node.feature.split(",")
+            if features[0] != "BOS/EOS":
+                token = features[5] if features[5] != "*" else node.surface
+                result.append(token)
             node = node.next
-        return tokens
+        return result
 
     def train(self):
         # Unify vectorizer and classifier into pipeline
