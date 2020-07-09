@@ -9,10 +9,16 @@ class TestTokenizer(unittest.TestCase):
         self.text2 = "本を読みました"
 
     def test_tokenize1(self):
-        self.assertEqual(["本", "を", "読む", "た"], tokenizer.tokenize(self.text1))
+        self.assertEqual(["本", "を", "読ん", "だ"], tokenizer.tokenize(self.text1))
 
     def test_tokenize2(self):
-        self.assertEqual(["本", "を", "読む", "ます", "た"], tokenizer.tokenize(self.text2))
+        self.assertEqual(["本", "を", "読む", "まし", "た"], tokenizer.tokenize(self.text2))
+
+    def test_lemmatize1(self):
+        self.assertEqual(["本", "を", "読む", "た"], tokenizer.lemmatize(self.text1))
+
+    def test_lemmatize2(self):
+        self.assertEqual(["本", "を", "読む", "ます", "た"], tokenizer.lemmatize(self.text2))
 
 if __name__ == "__main__":
     unittest.main()
