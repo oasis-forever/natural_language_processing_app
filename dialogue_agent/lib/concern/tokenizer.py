@@ -1,4 +1,7 @@
 import MeCab
+import sys
+sys.path.append("./concern")
+from stop_words import stop_words
 
 tagger = MeCab.Tagger()
 
@@ -20,5 +23,17 @@ def lemmatize(text):
             # assign index word or non-lemmatize word
             token = features[7] if features[7] != "*" else node.surface
             result.append(token)
+        node = node.next
+    return result
+
+def remove_stop_words(text):
+    node = tagger.parseToNode(text)
+    result = []
+    while node:
+        features = node.feature.split(",")
+        if features[0] != "BOS/EOS":
+            token = features[7] if features[7] != "*" else node.surface
+            if token not in stop_words():
+                result.append(token)
         node = node.next
     return result
