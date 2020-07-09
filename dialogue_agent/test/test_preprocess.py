@@ -2,6 +2,7 @@ import unittest
 import sys
 sys.path.append("../lib")
 from preprocess import PreProcess
+import numpy as np
 
 class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
@@ -27,6 +28,13 @@ class TestDialogueAgent(unittest.TestCase):
 
     def test_neologdn_normalized_token_text3(self):
         self.assertEqual(self.preprocess.raw_tokenize(self.text1), self.preprocess.neologdn_normalized_token(self.text3))
+
+    def test_bow(self):
+        np.alltrue(np.array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]) == self.preprocess.bow(self.texts))
+
+    def test_vocaburaly(self):
+        self.assertEqual({'(': 0, '株': 7, ')': 1, '自然': 9, '言語': 10, '処理': 6, '研究': 8, 'に': 4, '入社': 5, 'し': 2, 'た': 3}, self.preprocess.vocabulary(self.texts))
 
 if __name__ == "__main__":
     unittest.main()
