@@ -4,9 +4,12 @@ tagger = MeCab.Tagger()
 
 def tokenize(text):
     node = tagger.parseToNode(text)
-    tokens = []
+    result = []
     while node:
-        if node.surface != "":
-            tokens.append(node.surface)
+        features = node.feature.split(",")
+        if features[0] != "BOS/EOS":
+            # assign index word or non-lemmatize word
+            token = features[7] if features[7] != "*" else node.surface
+            result.append(token)
         node = node.next
-    return tokens
+    return result
