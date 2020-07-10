@@ -59,3 +59,38 @@ For MacOS
 ```bash
 $ brew install mecab mecab-ipadic-utf8
 ```
+
+* ipadic-NEologd is recommended, which is extended based on IPAdic and has been expandeding its vvocabulary crowling words appring on the internet.
+
+Install
+
+```bash
+$ git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
+$ cd mecab-ipadic-neologd
+$ ./bin/install-mecab-ipadic-neologd -n -a
+```
+
+Checked the path where ipadic-NEologd is installed
+
+```bash
+$ echo `mecab-config --dicdir`"/mecab-ipadic-neologd"
+```
+
+Check the behaviours
+
+```bash
+$ mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd
+ラルクのメンバーはいつの間にかみんな五十路だったんだ
+ラルク  名詞,固有名詞,人名,一般,*,*,ラルク,ラルク,ラルク
+の      助詞,連体化,*,*,*,*,の,ノ,ノ
+メンバー        名詞,一般,*,*,*,*,メンバー,メンバー,メンバー
+は      助詞,係助詞,*,*,*,*,は,ハ,ワ
+いつの間にか    副詞,一般,*,*,*,*,いつの間にか,イツノマニカ,イツノマニカ
+みんな  名詞,代名詞,一般,*,*,*,みんな,ミンナ,ミンナ
+五十路  名詞,一般,*,*,*,*,五十路,イソジ,イソジ
+だっ    助動詞,*,*,*,特殊・ダ,連用タ接続,だ,ダッ,ダッ
+た      助動詞,*,*,*,特殊・タ,基本形,た,タ,タ
+ん      名詞,非自立,一般,*,*,*,ん,ン,ン
+だ      助動詞,*,*,*,特殊・ダ,基本形,だ,ダ,ダ
+EOS
+```
