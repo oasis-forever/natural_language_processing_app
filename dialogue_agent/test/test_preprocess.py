@@ -4,6 +4,7 @@ sys.path.append("../lib")
 sys.path.append("../lib/concern")
 from preprocess import PreProcess
 import numpy as np
+from numpy.testing import assert_array_equal
 
 class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
@@ -31,8 +32,14 @@ class TestDialogueAgent(unittest.TestCase):
         self.assertEqual(self.preprocess.raw_tokenize(self.text1), self.preprocess.neologdn_normalized_token(self.text3))
 
     def test_bow(self):
-        np.alltrue(np.array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]) == self.preprocess.bow(self.texts))
+        assert_array_equal(
+            np.array(
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1]
+                ]
+            ), self.preprocess.bow(self.texts)
+        )
 
     def test_vocaburaly(self):
         self.assertEqual({'(株)': 0, '自然言語処理': 4, '研究': 3, '入社': 2, 'する': 1}, self.preprocess.vocabulary(self.texts))
