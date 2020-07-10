@@ -2,7 +2,7 @@ import MeCab
 
 class Mecab:
     def __init__(self):
-        self.tagger = MeCab.Tagger()
+        self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
 
     def parse(self, text):
         return self.tagger.parse(text)

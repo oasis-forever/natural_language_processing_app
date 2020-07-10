@@ -3,7 +3,7 @@ import sys
 sys.path.append("./concern")
 from stop_words import stop_words
 
-tagger = MeCab.Tagger()
+tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
 
 def tokenize(text):
     node = tagger.parseToNode(text)

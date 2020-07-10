@@ -11,7 +11,7 @@ BASE_DIR = normpath(dirname("__file__"))
 
 class DialogueAgent:
     def __init__(self, training_data):
-        self.tagger = MeCab.Tagger()
+        self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
         self.texts, self.labels = self._extract_trainig_data(training_data)
 
     def _extract_trainig_data(self, training_data):
