@@ -6,6 +6,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 import neologdn
 import unicodedata
+import sys
+sys.path.append("./concern")
+from tokenizer import tokenize
 
 BASE_DIR = normpath(dirname("__file__"))
 
@@ -20,28 +23,10 @@ class DialogueAgent:
         labels = training_data["label"]
         return texts, labels
 
-    def _preprocess(self, text):
-        text = unicodedata.normalize("NFKC", text)
-        text = neologdn.normalize(text)
-        text = text.lower()
-        return text
-
-    def _tokenize(self, text):
-        node = self.tagger.parseToNode(self._preprocess(text))
-        result = []
-        while node:
-            features = node.feature.split(",")
-            if features[0] != "BOS/EOS":
-                if features[0] not in ["助詞", "助動詞"]:
-                    token = features[6] if features[6] != "*" else node.surface
-                    result.append(token)
-            node = node.next
-        return result
-
     def train(self):
         # Unify vectorizer and classifier into pipeline
         pipeline = Pipeline([
-            ("vectorizer", CountVectorizer(tokenizer=self._tokenize)),
+            ("vectorizer", CountVectorizer(tokenizer=tokenize)),
             ("classifier", SVC())
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()

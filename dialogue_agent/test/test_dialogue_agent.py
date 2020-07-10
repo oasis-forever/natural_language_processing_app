@@ -1,6 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from dialogue_agent import DialogueAgent
 import contextlib
 
