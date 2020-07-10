@@ -32,8 +32,9 @@ class DialogueAgent:
         while node:
             features = node.feature.split(",")
             if features[0] != "BOS/EOS":
-                token = features[6] if features[6] != "*" else node.surface
-                result.append(token)
+                if features[0] not in ["助詞", "助動詞"]:
+                    token = features[6] if features[6] != "*" else node.surface
+                    result.append(token)
             node = node.next
         return result
 
