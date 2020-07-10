@@ -6,7 +6,7 @@ from use_sklearn import UseSkLearn
 import numpy as np
 from numpy.testing import assert_array_equal
 
-class TestVector(unittest.TestCase):
+class TestUseSkLearn(unittest.TestCase):
     def setUp(self):
         self.sklearn = UseSkLearn()
         self.texts = [

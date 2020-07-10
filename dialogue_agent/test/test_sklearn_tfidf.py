@@ -6,7 +6,7 @@ from sklearn_tfidf import SkLearnTfIdf
 import numpy as np
 from numpy.testing import assert_almost_equal
 
-class TestVector(unittest.TestCase):
+class TestSkLearnTfIdf(unittest.TestCase):
     def setUp(self):
         self.sklearn_tfidf = SkLearnTfIdf()
         self.texts = [

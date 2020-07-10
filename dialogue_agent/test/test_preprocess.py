@@ -6,7 +6,7 @@ from preprocess import PreProcess
 import numpy as np
 from numpy.testing import assert_array_equal
 
-class TestDialogueAgent(unittest.TestCase):
+class TestPreProcess(unittest.TestCase):
     def setUp(self):
         self.preprocess = PreProcess()
         self.text1 = "[初めてのTensorFlow]は定価2200円+税です"

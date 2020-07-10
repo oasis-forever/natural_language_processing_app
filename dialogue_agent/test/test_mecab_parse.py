@@ -5,7 +5,7 @@ from mecab_parse import Mecab
 import MeCab
 import contextlib
 
-class TestVector(unittest.TestCase):
+class TestMecab(unittest.TestCase):
     def setUp(self):
         self.mecab = Mecab()
         self.text = "私はサーバーサイドエンジニアです"
