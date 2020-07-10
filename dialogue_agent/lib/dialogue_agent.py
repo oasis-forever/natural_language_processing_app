@@ -8,7 +8,7 @@ import neologdn
 import unicodedata
 import sys
 sys.path.append("./concern")
-from tokenizer import tokenize
+from lemmatizer import lemmatize
 
 BASE_DIR = normpath(dirname("__file__"))
 
@@ -26,7 +26,7 @@ class DialogueAgent:
     def train(self):
         # Unify vectorizer and classifier into pipeline
         pipeline = Pipeline([
-            ("vectorizer", CountVectorizer(tokenizer=tokenize)),
+            ("vectorizer", CountVectorizer(tokenizer=lemmatize)),
             ("classifier", SVC())
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()

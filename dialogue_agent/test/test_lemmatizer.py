@@ -2,18 +2,18 @@ import unittest
 import sys
 sys.path.append("../lib")
 sys.path.append("../lib/concern")
-from tokenizer import tokenize
+from lemmatizer import lemmatize
 
-class TestTokenizer(unittest.TestCase):
+class TestLemmatizer(unittest.TestCase):
     def setUp(self):
         self.text1 = "本を読んだ"
         self.text2 = "本を読みました"
 
     def test_tokenize1(self):
-        self.assertEqual(['本', 'を', '読ん', 'だ'], tokenize(self.text1))
+        self.assertEqual(["本", "読む"], lemmatize(self.text1))
 
     def test_tokenize2(self):
-        self.assertEqual(['本', 'を', '読み', 'まし', 'た'], tokenize(self.text2))
+        self.assertEqual(["本", "読む"], lemmatize(self.text2))
 
 if __name__ == "__main__":
     unittest.main()
