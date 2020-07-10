@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from dialogue_agent import DialogueAgent
 
 if __name__ == "__main__":
