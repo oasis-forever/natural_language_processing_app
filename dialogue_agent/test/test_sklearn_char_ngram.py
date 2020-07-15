@@ -6,7 +6,7 @@ from sklearn_char_ngram import SkLearnCharNgram
 import numpy as np
 from numpy.testing import assert_array_equal
 
-class TestSkLearnNgram(unittest.TestCase):
+class TestSkLearnCharNgram(unittest.TestCase):
     def setUp(self):
         texts = ["東京から大阪に行く", "大阪から東京に行く"]
         self.sklearn_ngram = SkLearnCharNgram(texts, (3, 3))
