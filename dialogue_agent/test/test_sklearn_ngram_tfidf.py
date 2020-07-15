@@ -23,7 +23,7 @@ class TestSkLearnNgramTfIdf(unittest.TestCase):
         )
 
     def test_vocabulary(self):
-        self.assertEqual({'東京 から': 5, 'から 大阪': 0, '大阪 に': 4, 'に 行く': 2, '大阪 から': 3, 'から 東京': 1, '東京 に': 6}, self.sklearn_ngram_tfidf.vocabulary())
+        self.assertEqual({"東京 から": 5, "から 大阪": 0, "大阪 に": 4, "に 行く": 2, "大阪 から": 3, "から 東京": 1, "東京 に": 6}, self.sklearn_ngram_tfidf.vocabulary())
 
 if __name__ == "__main__":
     unittest.main()
