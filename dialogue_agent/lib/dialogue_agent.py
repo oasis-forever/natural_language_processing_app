@@ -2,6 +2,7 @@ from os.path import dirname, join, normpath
 import MeCab
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 import neologdn
@@ -23,10 +24,10 @@ class DialogueAgent:
         labels = training_data["label"]
         return texts, labels
 
-    def train(self):
+    def train(self, ngram_range):
         # Unify vectorizer and classifier into pipeline
         pipeline = Pipeline([
-            ("vectorizer", CountVectorizer(tokenizer=lemmatize)),
+            ("vectorizer", CountVectorizer(tokenizer=lemmatize, ngram_range=ngram_range)),
             ("classifier", SVC())
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()

@@ -10,7 +10,7 @@ if __name__ == "__main__":
     BASE_DIR = normpath(dirname("__file__"))
     # Training
     dialogue_agent = DialogueAgent("../csv/training_data.csv")
-    dialogue_agent.train()
+    dialogue_agent.train((1, 3))
     # Evaluation
     # Load test data
     test_data = pd.read_csv(join(BASE_DIR, "../csv/test_data.csv"))

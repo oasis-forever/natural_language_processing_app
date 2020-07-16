@@ -13,7 +13,8 @@ class TestDialogueAgent(unittest.TestCase):
     def _calFUT(self):
         input_text = "名前を教えて下さい"
         replies = "../csv/replies.csv"
-        self.dialogue_agent.train()
+        ngram_range = (1, 3)
+        self.dialogue_agent.train(ngram_range)
         return self.dialogue_agent.reply(input_text, replies)
 
     def test_reply(self):
