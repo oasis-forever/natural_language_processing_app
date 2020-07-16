@@ -9,11 +9,12 @@ class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
         training_data = "../csv/training_data.csv"
         self.dialogue_agent = DialogueAgent(training_data)
-        self.input_text = "名前を教えて下さい"
-        self.replies = "../csv/replies.csv"
 
     def _calFUT(self):
-        return self.dialogue_agent.reply(self.input_text, self.replies)
+        input_text = "名前を教えて下さい"
+        replies = "../csv/replies.csv"
+        self.dialogue_agent.train()
+        return self.dialogue_agent.reply(input_text, replies)
 
     def test_reply(self):
         from io import StringIO

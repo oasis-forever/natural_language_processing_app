@@ -39,7 +39,6 @@ class DialogueAgent:
         return self.pipeline.predict(texts)
 
     def reply(self, input_text, replies):
-        self.train()
         with open(join(BASE_DIR, replies)) as f:
             replies = f.read().split("\n")
         input_text = input_text
