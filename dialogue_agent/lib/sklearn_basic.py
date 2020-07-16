@@ -3,7 +3,7 @@ import sys
 sys.path.append("./concern")
 from tokenizer import tokenize
 
-class UseSkLearn():
+class SkLearnBasic():
     def __init__(self):
         pass
 
