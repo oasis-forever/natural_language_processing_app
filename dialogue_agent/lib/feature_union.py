@@ -1,5 +1,7 @@
 import scipy
 from sklearn.feature_extraction.text import CountVectorizer
+import sys
+sys.path.append("../lib")
 from tokenizer import tokenize
 
 class FeatureUnion:

@@ -1,6 +1,4 @@
 from sklearn.feature_extraction.text import CountVectorizer
-import sys
-sys.path.append("./concern")
 
 class SkLearnCharNgram():
     def __init__(self, texts, ngram_range):

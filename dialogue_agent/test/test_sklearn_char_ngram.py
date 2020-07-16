@@ -1,7 +1,6 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
 from sklearn_char_ngram import SkLearnCharNgram
 import numpy as np
 from numpy.testing import assert_array_equal
