@@ -13,13 +13,10 @@ class TestSkLearnNgramTfIdf(unittest.TestCase):
 
     def test_bow(self):
         assert_almost_equal(
-            np.array(
-                [
-                    [0.53404633, 0., 0.37997836, 0., 0.53404633, 0.53404633, 0.],
-                    [0, 0.53404633, 0.37997836, 0.53404633, 0., 0., 0.53404633]
-                ]
-            ),
-            self.sklearn_ngram_tfidf.bow_array()
+            np.array([
+                [0.53404633, 0., 0.37997836, 0., 0.53404633, 0.53404633, 0.],
+                [0, 0.53404633, 0.37997836, 0.53404633, 0., 0., 0.53404633]
+            ]), self.sklearn_ngram_tfidf.bow_array()
         )
 
     def test_vocabulary(self):

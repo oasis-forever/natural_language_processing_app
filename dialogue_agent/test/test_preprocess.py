@@ -50,12 +50,10 @@ class TestPreProcess(unittest.TestCase):
 
     def test_raw_bow(self):
         assert_array_equal(
-            np.array(
-                [
-                    [1, 1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1]
-                ]
-            ), self.preprocess.raw_bow(self.texts)
+            np.array([
+                [1, 1, 1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1, 1, 1]
+            ]), self.preprocess.raw_bow(self.texts)
         )
 
     def test_lemmatized_vocaburaly(self):
@@ -63,12 +61,10 @@ class TestPreProcess(unittest.TestCase):
 
     def test_lemmatized_bow(self):
         assert_array_equal(
-            np.array(
-                [
-                    [1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1]
-                ]
-            ), self.preprocess.lemmatized_bow(self.texts)
+            np.array([
+                [1, 1, 1, 1, 1],
+                [1, 1, 1, 1, 1]
+            ]), self.preprocess.lemmatized_bow(self.texts)
         )
 
     def test_lemmatized_vocaburaly(self):

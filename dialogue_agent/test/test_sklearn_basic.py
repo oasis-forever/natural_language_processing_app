@@ -17,13 +17,11 @@ class TestSkLearnBasic(unittest.TestCase):
 
     def test_calc_bow(self):
         assert_array_equal(
-            np.array(
-                [
-                    [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 2, 0],
-                    [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0],
-                    [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1]
-                ]
-            ), self.sklearn_basic.calc_bow(self.texts)
+            np.array([
+                [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 2, 0],
+                [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0],
+                [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1]
+            ]), self.sklearn_basic.calc_bow(self.texts)
         )
 
 if __name__ == "__main__":

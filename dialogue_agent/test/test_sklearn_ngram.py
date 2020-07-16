@@ -13,13 +13,10 @@ class TestSkLearnNgram(unittest.TestCase):
 
     def test_bow(self):
         assert_array_equal(
-            np.array(
-                [
-                    [1, 0, 1, 0, 1, 1, 0],
-                    [0, 1, 1, 1, 0, 0, 1]
-                ]
-            ),
-            self.sklearn_ngram.bow_array()
+            np.array([
+                [1, 0, 1, 0, 1, 1, 0],
+                [0, 1, 1, 1, 0, 0, 1]
+            ]), self.sklearn_ngram.bow_array()
         )
 
     def test_vocabulary(self):
