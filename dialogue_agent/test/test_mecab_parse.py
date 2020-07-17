@@ -2,7 +2,6 @@ import unittest
 import sys
 sys.path.append("../lib")
 from mecab_parse import Mecab
-import MeCab
 import contextlib
 
 class TestMecab(unittest.TestCase):
@@ -10,11 +9,14 @@ class TestMecab(unittest.TestCase):
         self.mecab = Mecab()
         self.text = "私はサーバーサイドエンジニアです"
 
-    def test_parse(self):
-        self.assertEqual("私\t名詞,代名詞,一般,*,*,*,私,ワタシ,ワタシ\nは\t助詞,係助詞,*,*,*,*,は,ハ,ワ\nサーバーサイドエンジニア\t名詞,一般,*,*,*,*,*\nです\t助動詞,*,*,*,特殊・デス,基本形,です,デス,デス\nEOS\n", self.mecab.parse(self.text))
-
     def _calFUT1(self):
         return self.mecab.parse_to_node_surface(self.text)
+
+    def _calFUT2(self):
+        return self.mecab.parse_to_node_feature(self.text)
+
+    def test_parse(self):
+        self.assertEqual("私\t名詞,代名詞,一般,*,*,*,私,ワタシ,ワタシ\nは\t助詞,係助詞,*,*,*,*,は,ハ,ワ\nサーバーサイドエンジニア\t名詞,一般,*,*,*,*,*\nです\t助動詞,*,*,*,特殊・デス,基本形,です,デス,デス\nEOS\n", self.mecab.parse(self.text))
 
     def test_parse_to_node_surface(self):
         from io import StringIO
@@ -25,9 +27,6 @@ class TestMecab(unittest.TestCase):
 
         actual = buf.getvalue()
         self.assertEqual("\n私\nは\nサーバーサイドエンジニア\nです\n\n", actual)
-
-    def _calFUT2(self):
-        return self.mecab.parse_to_node_feature(self.text)
 
     def test_parse_to_node_feature(self):
         from io import StringIO
