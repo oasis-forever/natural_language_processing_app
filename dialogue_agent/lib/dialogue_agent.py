@@ -16,13 +16,11 @@ BASE_DIR = normpath(dirname("__file__"))
 class DialogueAgent:
     def __init__(self, training_data):
         self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
-        self.texts, self.labels = self._extract_trainig_data(training_data)
 
-    def _extract_trainig_data(self, training_data):
+    def extract_trainig_data(self, training_data):
         training_data = pd.read_csv(join(BASE_DIR, training_data))
-        texts = training_data["text"]
-        labels = training_data["label"]
-        return texts, labels
+        self.texts = training_data["text"]
+        self.labels = training_data["label"]
 
     def train(self, ngram_range):
         # Unify vectorizer and classifier into pipeline
@@ -35,16 +33,11 @@ class DialogueAgent:
         # Sustain as an instance variable
         self.pipeline = pipeline
 
-    def predict(self, texts):
-        # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
-        return self.pipeline.predict(texts)
-
     def reply(self, input_text, replies):
         with open(join(BASE_DIR, replies)) as f:
             replies = f.read().split("\n")
-        input_text = input_text
-        # predict method receives input_text as list
-        predictions = self.predict([input_text])
+        # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
+        predictions = self.pipeline.predict([input_text])
         # Assign the first element of list of class ids
         predicted_class_id = predictions[0]
         print(replies[predicted_class_id])

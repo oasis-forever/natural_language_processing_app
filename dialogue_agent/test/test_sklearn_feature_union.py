@@ -8,7 +8,9 @@ from numpy.testing import assert_array_equal
 
 class TestSkLearnFeatureUnion(unittest.TestCase):
     def setUp(self):
-        self.feature_union = SkLearnFeatureUnion((2, 2))
+        ngram_range = (2, 2)
+        self.feature_union = SkLearnFeatureUnion()
+        self.feature_union.create_estimators(ngram_range)
 
     def test_unite_feature(self):
         texts = [

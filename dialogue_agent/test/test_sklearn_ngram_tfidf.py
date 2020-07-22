@@ -9,7 +9,9 @@ from numpy.testing import assert_almost_equal
 class TestSkLearnNgramTfIdf(unittest.TestCase):
     def setUp(self):
         texts = ["東京から大阪に行く", "大阪から東京に行く"]
-        self.sklearn_ngram_tfidf = SkLearnNgramTfIdf(texts, (2, 2))
+        ngram_range = (2, 2)
+        self.sklearn_ngram_tfidf = SkLearnNgramTfIdf()
+        self.sklearn_ngram_tfidf.vectorize(texts, (2, 2))
 
     def test_bow(self):
         assert_almost_equal(

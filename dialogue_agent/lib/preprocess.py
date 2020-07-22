@@ -22,12 +22,12 @@ class PreProcess:
         unicodedata_normalized_text = unicodedata.normalize("NFKC", text)
         return lemmatize(unicodedata_normalized_text)
 
-    def _vectorize(self, texts):
+    def vectorize(self, texts):
         self.raw_vectorizer = CountVectorizer(tokenizer=self._unicodedata_token)
         self.raw_vectorizer.fit(texts)
         return self.raw_vectorizer
 
-    def _lemmatize(self, texts):
+    def lemmatize(self, texts):
         self.lemmatized_vectorizer = CountVectorizer(tokenizer=self._unicodedata_normalized_token)
         self.lemmatized_vectorizer.fit(texts)
         return self.lemmatized_vectorizer
@@ -47,17 +47,13 @@ class PreProcess:
         return lemmatize(neologdn_normalized_text)
 
     def raw_bow(self, texts):
-        self._vectorize(texts)
         return self.raw_vectorizer.transform(texts).toarray()
 
     def raw_vocabulary(self, texts):
-        self._vectorize(texts)
         return self.raw_vectorizer.vocabulary_
 
     def lemmatized_bow(self, texts):
-        self._lemmatize(texts)
         return self.lemmatized_vectorizer.transform(texts).toarray()
 
     def lemmatized_vocabulary(self, texts):
-        self._lemmatize(texts)
         return self.lemmatized_vectorizer.vocabulary_

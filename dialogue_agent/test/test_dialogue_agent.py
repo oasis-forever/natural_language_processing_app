@@ -9,6 +9,7 @@ class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
         training_data = "../csv/training_data.csv"
         self.dialogue_agent = DialogueAgent(training_data)
+        self.dialogue_agent.extract_trainig_data(training_data)
 
     def _calFUT(self):
         input_text = "名前を教えて下さい"

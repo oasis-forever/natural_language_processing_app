@@ -8,7 +8,9 @@ from numpy.testing import assert_array_equal
 class TestSkLearnCharNgram(unittest.TestCase):
     def setUp(self):
         texts = ["東京から大阪に行く", "大阪から東京に行く"]
-        self.sklearn_ngram = SkLearnCharNgram(texts, (3, 3))
+        ngram_range = (3, 3)
+        self.sklearn_ngram = SkLearnCharNgram()
+        self.sklearn_ngram.vectorize(texts, ngram_range)
 
     def test_bow(self):
         assert_array_equal(
