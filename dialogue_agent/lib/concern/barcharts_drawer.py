@@ -7,7 +7,7 @@ matplotlib.use("Agg")
 # Define font for JP lang
 plt.rcParams["font.family"] = "IPAPGothic"
 
-def draw_barcharts(value_table, x_labels, titles, method_name):
+def draw_barcharts(value_table, x_labels, titles, filename):
     """
     value_table: 2 dimensional array of values to show
     x_labels: List for assignment of x-axis labels
@@ -20,8 +20,6 @@ def draw_barcharts(value_table, x_labels, titles, method_name):
 
     if n_dims != len(x_labels):
         raise ValueError("value_table.shape[1] != len(x_labels)")
-
-    x_labels = [str(x_label) for x_label in x_labels]
 
     # Define range of x-axis to show
     xmin = -1
@@ -39,6 +37,7 @@ def draw_barcharts(value_table, x_labels, titles, method_name):
     # Describe bars in each subplot
     for i, values in enumerate(value_table):
         ax = axs[i]
+        ax.bar(x_labels, values, align="center")
         ax.set_title(titles[i])
         ax.set_xlim([xmin, xmax])
         ax.set_ylim([ymin, ymax])
@@ -53,4 +52,4 @@ def draw_barcharts(value_table, x_labels, titles, method_name):
             ax.set_xticklabels([])
 
     plt.tight_layout()
-    plt.savefig("../barcharts/{}.png".format(method_name))
+    plt.savefig("../barcharts/{}.png".format(filename))
