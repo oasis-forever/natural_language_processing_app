@@ -6,6 +6,7 @@
   * scipy 1.5.0
   * pandas 1.0.5
   * scikit-learn 0.23.1
+  * matplotlib 3.3.0
   * mecab-python3 1.0.0
   * neologdn 0.4
   * Keras 2.4.3
@@ -25,6 +26,8 @@
 * [gensim](https://radimrehurek.com/gensim/auto_examples/index.html)
 
 ## 3. Setup
+
+### 3-1. Library
 
 * If you have not install `lzma` in your environment, an error will occur in importing `pandas` as follows.
 
@@ -63,7 +66,6 @@ $ brew install mecab mecab-ipadic-utf8
 * ipadic-NEologd is recommended, which is extended based on IPAdic and has been expandeding its vvocabulary crowling words appring on the internet.
 
 Install
-
 ```bash
 $ git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 $ cd mecab-ipadic-neologd
@@ -93,4 +95,27 @@ $ mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd
 ん      名詞,非自立,一般,*,*,*,ん,ン,ン
 だ      助動詞,*,*,*,特殊・ダ,基本形,だ,ダ,ダ
 EOS
+```
+
+### 3-2. Font
+
+Install IPAPGothic for visibility of Japanese language in your terminal
+
+Install
+
+```bash
+$ sudo apt install -y fonts-ipafont
+$ fc-cache -fv
+```
+
+Update font cache
+
+```bash
+$ fc-cache -fv
+```
+
+Check if the font is successfully installed
+
+```bash
+$ fc-list | grep -i ipa
 ```
