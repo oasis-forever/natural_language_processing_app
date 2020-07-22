@@ -11,9 +11,6 @@ class LatentSemanticAnalysis:
     def __init__(self):
         pass
 
-    def _print_histogram(self, value_table, x_labels, titles, method_name):
-        draw_barcharts(value_table, x_labels, titles, method_name)
-
     def vectorize(self, texts):
         self.texts = texts
         self.vectorizer = CountVectorizer(tokenizer=lemmatize)
@@ -38,3 +35,23 @@ class LatentSemanticAnalysis:
     def svd_array(self):
         return self.decomposed_feature
 
+    def bow_table_to_barchart(self):
+        draw_barcharts(self.bow.toarray(), self.vectorizer.get_feature_names(), self.texts, "bow_table")
+
+    def svd_array_to_barchart(self):
+        draw_barcharts(self.decomposed_feature, range(self.svd.n_components), self.texts, "svd_array")
+
+if __name__ == "__main__":
+    lsa = LatentSemanticAnalysis()
+    texts = [
+        "車は速く走る",
+        "バイクは速く走る",
+        "自転車はゆっくり走る",
+        "三輪車はゆっくり走る",
+        "プログラミングは楽しい",
+        "Pythonは楽しい",
+    ]
+    lsa.vectorize(texts)
+    lsa.execute_svd()
+    lsa.bow_table_to_barchart()
+    lsa.svd_array_to_barchart()
