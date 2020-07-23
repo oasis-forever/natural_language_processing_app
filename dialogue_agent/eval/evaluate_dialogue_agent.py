@@ -11,7 +11,7 @@ if __name__ == "__main__":
     dialogue_agent = DialogueAgent()
     dialogue_agent.extract_trainig_data("../csv/training_data.csv")
     # Training
-    dialogue_agent.train()
+    dialogue_agent.train((1, 2))
     # Evaluation
     # Load test data
     test_data = pd.read_csv(join(BASE_DIR, "../csv/test_data.csv"))

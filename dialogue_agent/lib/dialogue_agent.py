@@ -1,11 +1,10 @@
 from os.path import dirname, join, normpath
 import MeCab
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
-from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 import neologdn
 import unicodedata
 import sys
@@ -23,12 +22,11 @@ class DialogueAgent:
         self.texts = training_data["text"]
         self.labels = training_data["label"]
 
-    def train(self):
+    def train(self, ngram_range):
         # Unify vectorizer and classifier into pipeline
         self.pipeline = Pipeline([
-            ("vectorizer", CountVectorizer(tokenizer=lemmatize)),
-            ("svd", TruncatedSVD(n_components=100)),
-            ("classifier", SVC())
+            ("vectorizer", TfidfVectorizer(tokenizer=lemmatize, ngram_range=ngram_range)),
+            ("classifier", RandomForestClassifier(n_estimators=30))
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()
         self.pipeline.fit(self.texts, self.labels)
