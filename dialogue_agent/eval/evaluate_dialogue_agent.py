@@ -8,9 +8,10 @@ from dialogue_agent import DialogueAgent
 
 if __name__ == "__main__":
     BASE_DIR = normpath(dirname("__file__"))
+    dialogue_agent = DialogueAgent()
+    dialogue_agent.extract_trainig_data("../csv/training_data.csv")
     # Training
-    dialogue_agent = DialogueAgent("../csv/training_data.csv")
-    dialogue_agent.train((1, 3))
+    dialogue_agent.train()
     # Evaluation
     # Load test data
     test_data = pd.read_csv(join(BASE_DIR, "../csv/test_data.csv"))

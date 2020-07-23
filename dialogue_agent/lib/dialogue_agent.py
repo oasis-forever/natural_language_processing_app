@@ -3,6 +3,7 @@ import MeCab
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 import neologdn
@@ -14,7 +15,7 @@ from lemmatizer import lemmatize
 BASE_DIR = normpath(dirname("__file__"))
 
 class DialogueAgent:
-    def __init__(self, training_data):
+    def __init__(self):
         self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
 
     def extract_trainig_data(self, training_data):
@@ -22,22 +23,24 @@ class DialogueAgent:
         self.texts = training_data["text"]
         self.labels = training_data["label"]
 
-    def train(self, ngram_range):
+    def train(self):
         # Unify vectorizer and classifier into pipeline
-        pipeline = Pipeline([
-            ("vectorizer", CountVectorizer(tokenizer=lemmatize, ngram_range=ngram_range)),
+        self.pipeline = Pipeline([
+            ("vectorizer", CountVectorizer(tokenizer=lemmatize)),
+            ("svd", TruncatedSVD(n_components=100)),
             ("classifier", SVC())
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()
-        pipeline.fit(self.texts, self.labels)
-        # Sustain as an instance variable
-        self.pipeline = pipeline
+        self.pipeline.fit(self.texts, self.labels)
 
-    def reply(self, input_text, replies):
+    def predict(self, input_text):
+        # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
+        self.predictions = self.pipeline.predict(input_text)
+        return self.predictions
+
+    def reply(self, replies):
         with open(join(BASE_DIR, replies)) as f:
             replies = f.read().split("\n")
-        # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
-        predictions = self.pipeline.predict([input_text])
         # Assign the first element of list of class ids
-        predicted_class_id = predictions[0]
-        print(replies[predicted_class_id])
+        predicted_class_id = self.predictions[0]
+        return replies[predicted_class_id]
