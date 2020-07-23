@@ -24,7 +24,7 @@ class LatentSemanticAnalysis:
         self.bow = self.vectorizer.transform(self.texts)
 
     def bow_shape(self):
-        print("Shape: {}".format(self.bow.shape))
+        return self.bow.shape
 
     def bow_table(self):
         bow_table = pd.DataFrame(self.bow.toarray(), columns=self.vectorizer.get_feature_names())
@@ -37,7 +37,7 @@ class LatentSemanticAnalysis:
         self.decomposed_feature = self.svd.transform(self.bow)
 
     def svd_shape(self):
-        print("Shape: {}".format(self.decomposed_feature.shape))
+        return self.decomposed_feature.shape
 
     def svd_array(self):
         draw_barcharts(self.decomposed_feature, range(self.svd.n_components), self.texts, self._filename(sys._getframe().f_code.co_name))

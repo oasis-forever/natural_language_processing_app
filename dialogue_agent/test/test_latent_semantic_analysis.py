@@ -18,52 +18,31 @@ class TestLatentSemanticAnalysis(unittest.TestCase):
             "Pythonは楽しい",
         ]
         self.lsa = LatentSemanticAnalysis()
-
-    def _calFUT1(self):
         self.lsa.vectorize(self.texts)
-        return self.lsa.bow_shape()
 
-    def _calFUT2(self):
+    def _calFUT(self):
         self.lsa.vectorize(self.texts)
         return self.lsa.bow_table()
 
-    def _calFUT3(self):
-        self.lsa.vectorize(self.texts)
-        self.lsa.execute_svd()
-        return self.lsa.svd_shape()
-
     def test_bow_shape(self):
-        from io import StringIO
-        buf = StringIO()
 
-        with contextlib.redirect_stdout(buf):
-            self._calFUT1()
-
-        actual = buf.getvalue()
-        self.assertEqual("Shape: (6, 10)\n", actual)
+        self.assertEqual((6, 10), self.lsa.bow_shape())
 
     def test_bow_table(self):
         from io import StringIO
         buf = StringIO()
 
         with contextlib.redirect_stdout(buf):
-            self._calFUT2()
+            self._calFUT()
 
         actual = buf.getvalue()
         self.assertEqual("   python  ゆっくり  バイク  プログラミング  三輪車  楽しい  自転車  走る  車  速い\n0       0     0    0        0    0    0    0   1  1   1\n1       0     0    1        0    0    0    0   1  0   1\n2       0     1    0        0    0    0    1   1  0   0\n3       0     1    0        0    1    0    0   1  0   0\n4       0     0    0        1    0    1    0   0  0   0\n5       1     0    0        0    0    1    0   0  0   0\n", actual)
 
     def test_svd_shape(self):
-        from io import StringIO
-        buf = StringIO()
-
-        with contextlib.redirect_stdout(buf):
-            self._calFUT3()
-
-        actual = buf.getvalue()
-        self.assertEqual("Shape: (6, 4)\n", actual)
+        self.lsa.execute_svd()
+        self.assertEqual((6, 4), self.lsa.svd_shape())
 
     def test_svd_array(self):
-        self.lsa.vectorize(self.texts)
         self.lsa.execute_svd()
         assert_almost_equal(
             np.array([
