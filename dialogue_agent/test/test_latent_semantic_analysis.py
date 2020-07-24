@@ -25,7 +25,6 @@ class TestLatentSemanticAnalysis(unittest.TestCase):
         return self.lsa.bow_table()
 
     def test_bow_shape(self):
-
         self.assertEqual((6, 10), self.lsa.bow_shape())
 
     def test_bow_table(self):
