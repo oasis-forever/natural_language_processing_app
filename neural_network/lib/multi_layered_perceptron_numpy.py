@@ -5,7 +5,7 @@ from numpy_perceptron import sigmoid
 from numpy_perceptron import rectified_liner_unit
 from numpy_perceptron import calc_innner_product
 
-class MultiLayerPerceptronNumPy:
+class MultiLayeredPerceptronNumPy:
     def __init__(self):
         pass
 

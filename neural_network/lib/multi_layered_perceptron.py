@@ -3,7 +3,7 @@ import sys
 sys.path.append("../concern")
 from math_perceptron import rectified_liner_unit
 
-class MultiLayerPerceptron:
+class MultiLayeredPerceptron:
     def __init__(self):
         pass
 

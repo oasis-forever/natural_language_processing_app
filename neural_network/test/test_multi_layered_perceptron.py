@@ -2,11 +2,11 @@ import unittest
 import sys
 sys.path.append("../lib")
 sys.path.append("../lib/concern")
-from multi_layer_perceptron import MultiLayerPerceptron
+from multi_layered_perceptron import MultiLayeredPerceptron
 
-class TestMultiLayerPerceptron(unittest.TestCase):
+class TestMultiLayeredPerceptron(unittest.TestCase):
     def setUp(self):
-        self.mlp = MultiLayerPerceptron()
+        self.mlp = MultiLayeredPerceptron()
         self.weights = []
         self.biases = []
 

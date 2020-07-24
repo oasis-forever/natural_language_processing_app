@@ -2,13 +2,13 @@ import unittest
 import sys
 sys.path.append("../lib")
 sys.path.append("../lib/concern")
-from multi_layer_perceptron_numpy import MultiLayerPerceptronNumPy
+from multi_layered_perceptron_numpy import MultiLayeredPerceptronNumPy
 import numpy as np
 from numpy.testing import assert_almost_equal
 
-class TestMultiLayerPerceptronNumPy(unittest.TestCase):
+class TestMultiLayeredPerceptronNumPy(unittest.TestCase):
     def setUp(self):
-        self.m_numpy = MultiLayerPerceptronNumPy()
+        self.mlp_numpy = MultiLayeredPerceptronNumPy()
         self.x = np.array([0.2, 0.4, -0.1])
         self.w_1 = np.array([
             [-0.423, -0.795, 1.223],
@@ -21,11 +21,11 @@ class TestMultiLayerPerceptronNumPy(unittest.TestCase):
         self.b_2 = np.array([0.255])
 
     def test_layer_1(self):
-        assert_almost_equal(np.array([0.0211, 1.5785]), self.m_numpy.layer_1(self.w_1, self.b_1, self.x))
+        assert_almost_equal(np.array([0.0211, 1.5785]), self.mlp_numpy.layer_1(self.w_1, self.b_1, self.x))
 
     def test_layer_2(self):
-        self.m_numpy.layer_1(self.w_1, self.b_1)
-        assert_almost_equal(np.array([0.0904158]), self.m_numpy.layer_2(self.w_2, self.b_2))
+        self.mlp_numpy.layer_1(self.w_1, self.b_1, self.x)
+        assert_almost_equal(np.array([0.0904158]), self.mlp_numpy.layer_2(self.w_2, self.b_2))
 
 if __name__ == "__main__":
     unittest.main()
