@@ -1,29 +1,32 @@
 ## Environment
 
 * WSL(Ubuntu 18.04.4 LTS)
-* Python 3.8.1
-  * numpy 1.15.0
-  * scipy 1.5.0
+* Python 3.8.5
+  * gensim 3.8.3
+  * Keras 2.4.3
+  * matplotlib 3.3.0
+  * mecab-python3 1.0.1
+  * neologdn 0.4
+  * numpy 1.19.1
   * pandas 1.0.5
   * scikit-learn 0.23.1
-  * matplotlib 3.3.0
-  * mecab-python3 1.0.0
-  * neologdn 0.4
-  * Keras 2.4.3
-  * gensim 3.8.3
+  * scipy 1.4.1
+  * tensorflow 2.2.0
+  * unidic-lite 1.0.6
 
 ## 2. Reference
 
 * [『15Stepで踏破 自然言語処理アプリケーション開発入門 (StepUp!選書)』](https://bookmeter.com/books/14438482)
-* [NumPy v1.19 Manual](https://numpy.org/doc/stable/)
-* [SciPy](https://www.scipy.org/docs.html)
-* [pandas](https://pandas.pydata.org/docs/)
-* [scikit-laern](https://scikit-learn.org/stable/user_guide.html)
+* [gensim](https://radimrehurek.com/gensim/auto_examples/index.html)
+* [Keras](https://keras.io/guides/)
+* [matplotlib](https://matplotlib.org/)
 * [mecab](https://taku910.github.io/mecab/)
 * [neologd](https://github.com/neologd/mecab-ipadic-neologd)
+* [NumPy v1.19 Manual](https://numpy.org/doc/stable/)
+* [pandas](https://pandas.pydata.org/docs/)
+* [scikit-laern](https://scikit-learn.org/stable/user_guide.html)
+* [SciPy](https://www.scipy.org/docs.html)
 * [Regexp.ja](https://github.com/neologd/mecab-ipadic-neologd/wiki/Regexp.ja)
-* [Keras](https://keras.io/guides/)
-* [gensim](https://radimrehurek.com/gensim/auto_examples/index.html)
 
 ## 3. Setup
 
