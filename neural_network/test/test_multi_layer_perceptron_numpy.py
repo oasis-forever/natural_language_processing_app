@@ -1,6 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from multi_layer_perceptron_numpy import MultiLayerPerceptronNumPy
 import numpy as np
 from numpy.testing import assert_almost_equal

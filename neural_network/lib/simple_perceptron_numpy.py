@@ -1,13 +1,14 @@
 import numpy as np
+import sys
+sys.path.append("../concern")
+from numpy_perceptron import sigmoid
+from numpy_perceptron import calc_innner_product
 
 class SimplePerceptronNumPy:
     def __init__(self):
         pass
 
-    def _sigmoid(self, z):
-        return 1.0 / (1.0 + np.exp(-z))
-
     def perception(self, weight, bias, x):
-        z = bias + np.dot(x, weight)
-        output = self._sigmoid(z)
+        z = calc_innner_product(weight, bias, x)
+        output = sigmoid(z)
         return output
