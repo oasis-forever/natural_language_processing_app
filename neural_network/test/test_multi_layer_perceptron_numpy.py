@@ -9,15 +9,23 @@ from numpy.testing import assert_almost_equal
 class TestMultiLayerPerceptronNumPy(unittest.TestCase):
     def setUp(self):
         self.m_numpy = MultiLayerPerceptronNumPy()
-
-    def test_layer_1(self):
-        w_1 = np.array([
+        self.x = np.array([0.2, 0.4, -0.1])
+        self.w_1 = np.array([
             [-0.423, -0.795, 1.223],
             [1.402, 0.885, -1.701]
         ])
-        b_1 = np.array([0.546, 0.774])
-        x = np.array([0.2, 0.4, -0.1])
-        assert_almost_equal(np.array([0.0211, 1.5785]), self.m_numpy.layer_1(w_1, b_1, x))
+        self.b_1 = np.array([0.546, 0.774])
+        self.w_2 = np.array([
+            [1.567, -1.645]
+        ])
+        self.b_2 = np.array([0.255])
+
+    def test_layer_1(self):
+        assert_almost_equal(np.array([0.0211, 1.5785]), self.m_numpy.layer_1(self.w_1, self.b_1, self.x))
+
+    def test_layer_2(self):
+        self.m_numpy.layer_1(self.w_1, self.b_1)
+        assert_almost_equal(np.array([0.0904158]), self.m_numpy.layer_2(self.w_2, self.b_2))
 
 if __name__ == "__main__":
     unittest.main()

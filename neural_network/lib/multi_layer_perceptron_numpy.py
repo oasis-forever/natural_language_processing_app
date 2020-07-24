@@ -14,3 +14,7 @@ class MultiLayerPerceptronNumPy:
         self.out_1 = rectified_liner_unit(z)
         return self.out_1
 
+    def layer_2(self, weights, bias):
+        z = calc_innner_product(weights, bias, self.out_1)
+        self.out_2 = sigmoid(z)
+        return self.out_2
