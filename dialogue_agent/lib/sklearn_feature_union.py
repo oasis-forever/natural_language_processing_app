@@ -8,7 +8,7 @@ class SkLearnFeatureUnion:
     def __init__(self):
         pass
 
-    def create_estimators(self, ngram_range):
+    def build_estimators(self, ngram_range):
         # Word-based BoW
         self.word_bow_vectorizer = CountVectorizer(tokenizer=tokenize)
         self.char_bigram_vectorizer = CountVectorizer(analyzer="char", ngram_range=ngram_range)

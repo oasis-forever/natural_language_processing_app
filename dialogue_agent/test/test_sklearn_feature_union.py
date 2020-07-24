@@ -10,7 +10,7 @@ class TestSkLearnFeatureUnion(unittest.TestCase):
     def setUp(self):
         ngram_range = (2, 2)
         self.feature_union = SkLearnFeatureUnion()
-        self.feature_union.create_estimators(ngram_range)
+        self.feature_union.build_estimators(ngram_range)
 
     def test_unite_feature(self):
         texts = [
