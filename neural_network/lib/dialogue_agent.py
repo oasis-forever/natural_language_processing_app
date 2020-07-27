@@ -4,10 +4,10 @@ import MeCab
 import neologdn
 import numpy as np
 import pandas as pd
-from keras.layers import Dense
-from keras.models import Sequential
+from keras.wrappers.scikit_learn import KerasClassifier
 from keras.utils import to_categorical
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.pipeline import Pipeline
 import sys
 sys.path.append("./concern")
 from lemmatizer import lemmatize
@@ -26,25 +26,24 @@ class DialogueAgent:
 
     def train(self, ngram_range):
         self.vectorizer = TfidfVectorizer(tokenizer=lemmatize, ngram_range=ngram_range)
-        tfidf = self.vectorizer.fit_transform(self.texts)
+        self.vectorizer.fit(self.texts)
         # Dimension of feature vector to input
         feature_dim = len(self.vectorizer.get_feature_names())
         # Dimensions to output which is equal to the nunber of labels
         n_labels = max(self.labels) + 1
-        self.mlp = build_multi_layered_perceptron(input_dim=feature_dim, output_dim=n_labels)
-        # Convert labels into one-hot encode to class IDs are used as traiing data
-        labels_onehot = to_categorical(self.labels, n_labels)
-        # FIXME: https://github.com/oasis-forever/nlp_tutorial/issues/2
-        self.mlp.fit(tfidf, labels_onehot, epochs=100)
+        classifier = KerasClassifier(build_fn=build_multi_layered_perceptron, input_dim=feature_dim, hidden_units=32, output_dim=n_labels)
+        self.pipeline = Pipeline([
+            ("vectorizer", self.vectorizer),
+            ("classifier", classifier)
+        ])
+        # FIXME: https://github.com/oasis-forever/nlp_tutorial/issues/2#issuecomment-664194089
+        self.pipeline.fit(self.texts, self.labels, classifier__epochs=100)
 
     def predict(self, input_text):
-        tfidf = self.vectorizer.transform(input_text)
-        predictions = self.mlp.predict(tfidf)
-        # Treat the biggest value of index of dimension as predicted_class_id
-        self.predicted_labels = np.argmax(predictions, axis=1)
+        self.predictions = self.pipeline.predict(input_text)
 
     def reply(self, replies):
         with open(join(BASE_DIR, replies)) as f:
             replies = f.read().split("\n")
-        predicted_class_id = self.prediction_labels[0]
+        predicted_class_id = self.predictions[0]
         return replies[predicted_class_id]
