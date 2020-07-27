@@ -1,8 +1,10 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from bag_of_words import BagOfWords
 from mecab_parse import Mecab
+from tokenizer import tokenize
 
 class TestBagOfWords(unittest.TestCase):
     def setUp(self):
@@ -15,7 +17,7 @@ class TestBagOfWords(unittest.TestCase):
         ]
 
     def test_calc_bow(self):
-        tokenized_texts = [self.mecab.tokenize(text) for text in self.texts]
+        tokenized_texts = [tokenize(text) for text in self.texts]
         vocabulary, bow = self.bag_of_words.calc_bow(tokenized_texts)
         self.assertEqual(
             {
@@ -51,7 +53,7 @@ class TestBagOfWords(unittest.TestCase):
         )
 
     def test_calc_bow_counter_ver(self):
-        tokenized_texts = [self.mecab.tokenize(text) for text in self.texts]
+        tokenized_texts = [tokenize(text) for text in self.texts]
         bow = self.bag_of_words.calc_bow_counter_ver(tokenized_texts)
         self.assertEqual(
             [
