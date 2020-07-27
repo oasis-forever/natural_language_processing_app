@@ -30,18 +30,7 @@ class TextStats(BaseEstimator, TransformerMixin):
     def unite_feature(self, texts, ngram_range):
         # Unite lists of dict as a feature vector
         combined = FeatureUnion([
-            # FIXME: The following error is notified in executing test
-            # Traceback (most recent call last):
-            #  File "<stdin>", line 1, in <module>
-            #  File "../lib/sklearn_adhoc_union.py", line 29, in unite_feature
-            #    ("stats", Pipeline([("stats", TextStats()), ("vect", DictVectorizer())])),
-            #  File "/home/oasist/.pyenv/versions/3.8.1/lib/python3.8/site-packages/sklearn/utils/#validation.py", line 73, in inner_f
-            #    return f(**kwargs)
-            #  File "/home/oasist/.pyenv/versions/3.8.1/lib/python3.8/site-packages/sklearn/#pipeline.py", line 114, in __init__
-            #    self._validate_steps()
-            #  File "/home/oasist/.pyenv/versions/3.8.1/lib/python3.8/site-packages/sklearn/#pipeline.py", line 159, in _validate_steps
-            #    raise TypeError("All intermediate steps should be "
-            #TypeError: All intermediate steps should be transformers and implement fit and transform #or be the string 'passthrough' 'TextStats()' (type <class #'sklearn_adhoc_union.TextStats'>) doesn't
+            # FIXME: https://github.com/oasis-forever/nlp_tutorial/issues/1
             ("stats", Pipeline([("stats", TextStats()), ("vect", DictVectorizer())])),
             ("char_bigram", CountVectorizer(analyzer="char", ngram_range=ngram_range))
         ])

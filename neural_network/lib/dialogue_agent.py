@@ -37,9 +37,7 @@ class DialogueAgent:
         self.mlp.compile(loss="categorical_crossentropy", optimizer="adam")
         # Convert labels into one-hot encode to class IDs are used as traiing data
         labels_onehot = to_categorical(self.labels, n_labels)
-        # FIXME: The following error message is notified when run
-        # tensorflow.python.framework.errors_impl.InvalidArgumentError: indices[3] = [0,1631] is out of order. Many sparse ops require sorted indices.
-        #    Use `tf.sparse.reorder` to create a correctly ordered copy.
+        # FIXME: https://github.com/oasis-forever/nlp_tutorial/issues/2
         self.mlp.fit(tfidf, labels_onehot, epochs=100)
 
     def predict(self, input_text):
