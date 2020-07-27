@@ -15,17 +15,17 @@ class ClassIdsAsTrainingData:
         y_one_hot = to_categorical(y)
         return y_one_hot
 
-    def design_model(self):
-        self.model = Sequential()
-        self.model.add(Dense(units=32, input_dim=100, activation="relu"))
-        self.model.add(Dense(units=10, activation="softmax"))
+    def build_mlp(self):
+        self.mlp = Sequential()
+        self.mlp.add(Dense(units=32, input_dim=100, activation="relu"))
+        self.mlp.add(Dense(units=10, activation="softmax"))
         # sparce_categorical_crossentropy receives non-one-hot encode as training data
-        self.model.compile(loss="sparse_categorical_crossentropy", optimizer="adam")
+        self.mlp.compile(loss="sparse_categorical_crossentropy", optimizer="adam")
 
-    def fit_model(self):
+    def fit_mlp(self):
         X = np.array([
             generate_n_dim(100),
             generate_n_dim(100),
         ])
         y = np.array([0, 1])
-        self.model.fit(X, y, epochs=100)
+        self.mlp.fit(X, y, epochs=100)

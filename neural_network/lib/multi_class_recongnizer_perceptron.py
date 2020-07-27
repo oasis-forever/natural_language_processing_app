@@ -9,13 +9,13 @@ class MultiClassRecongnizerPerceptron:
     def __init__(self):
         pass
 
-    def design_model(self):
-        self.model = Sequential()
-        self.model.add(Dense(units=32, input_dim=100, activation="relu"))
-        self.model.add(Dense(units=10, activation="softmax"))
-        self.model.compile(loss="categorical_crossentropy", optimizer="adam")
+    def build_mlp(self):
+        self.mlp = Sequential()
+        self.mlp.add(Dense(units=32, input_dim=100, activation="relu"))
+        self.mlp.add(Dense(units=10, activation="softmax"))
+        self.mlp.compile(loss="categorical_crossentropy", optimizer="adam")
 
-    def fit_model(self):
+    def fit_mlp(self):
         X = np.array([
             generate_n_dim(100),
             generate_n_dim(100),
@@ -26,4 +26,4 @@ class MultiClassRecongnizerPerceptron:
             # Class ID is 1
             [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         ])
-        self.model.fit(X, y, epochs=100)
+        self.mlp.fit(X, y, epochs=100)
