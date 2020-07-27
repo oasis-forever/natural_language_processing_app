@@ -11,6 +11,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import sys
 sys.path.append("./concern")
 from lemmatizer import lemmatize
+from mlp_builder import build_multi_layered_perceptron
 
 BASE_DIR = normpath(dirname("__file__"))
 
@@ -30,11 +31,7 @@ class DialogueAgent:
         feature_dim = len(self.vectorizer.get_feature_names())
         # Dimensions to output which is equal to the nunber of labels
         n_labels = max(self.labels) + 1
-        # Build multi-layered perceptron
-        self.mlp = Sequential()
-        self.mlp.add(Dense(units=32, input_dim=feature_dim, activation="relu"))
-        self.mlp.add(Dense(units=n_labels, activation="softmax"))
-        self.mlp.compile(loss="categorical_crossentropy", optimizer="adam")
+        self.mlp = build_multi_layered_perceptron(input_dim=feature_dim, output_dim=n_labels)
         # Convert labels into one-hot encode to class IDs are used as traiing data
         labels_onehot = to_categorical(self.labels, n_labels)
         # FIXME: https://github.com/oasis-forever/nlp_tutorial/issues/2
