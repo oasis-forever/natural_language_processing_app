@@ -1,8 +1,9 @@
+import os
 import MeCab
 
 class Mecab:
     def __init__(self):
-        self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
+        self.tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
     def parse(self, text):
         return self.tagger.parse(text)

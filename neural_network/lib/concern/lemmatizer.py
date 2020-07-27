@@ -1,8 +1,9 @@
+import os
 import MeCab
 import neologdn
 import unicodedata
 
-tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
+tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
 def _preprocess(text):
     text = unicodedata.normalize("NFKC", text)

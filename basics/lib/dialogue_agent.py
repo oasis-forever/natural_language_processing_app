@@ -1,3 +1,4 @@
+import os
 from os.path import dirname, join, normpath
 import MeCab
 import pandas as pd
@@ -15,7 +16,7 @@ BASE_DIR = normpath(dirname("__file__"))
 
 class DialogueAgent:
     def __init__(self):
-        self.tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
+        self.tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
     def extract_trainig_data(self, training_data):
         training_data = pd.read_csv(join(BASE_DIR, training_data))

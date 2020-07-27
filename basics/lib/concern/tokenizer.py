@@ -1,6 +1,7 @@
+import os
 import MeCab
 
-tagger = MeCab.Tagger("-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd")
+tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
 def tokenize(text):
     node = tagger.parseToNode(text)
