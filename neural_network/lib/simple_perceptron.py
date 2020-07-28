@@ -1,6 +1,6 @@
 import math
 import sys
-sys.path.append("../concern")
+sys.path.append("./concern")
 from math_perceptron import sigmoid
 
 class SimplePerceptron:

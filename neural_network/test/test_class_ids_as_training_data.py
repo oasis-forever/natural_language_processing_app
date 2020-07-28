@@ -1,6 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from class_ids_as_training_data import ClassIdsAsTrainingData
 import numpy as np
 from numpy.testing import assert_array_equal

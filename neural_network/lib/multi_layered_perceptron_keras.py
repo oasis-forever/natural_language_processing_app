@@ -1,7 +1,7 @@
 from keras.layers import Dense
 from keras.models import Sequential
 import sys
-sys.path.append("../lib/concern")
+sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
 
 class MultiLayeredPerceptronKeras:

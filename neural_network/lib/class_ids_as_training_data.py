@@ -1,7 +1,7 @@
 import numpy as np
 from keras.utils import to_categorical
 import sys
-sys.path.append("../lib/concern")
+sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
 from mlp_builder import build_two_layered_perceptron
 
