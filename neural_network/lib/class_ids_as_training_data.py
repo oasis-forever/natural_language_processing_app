@@ -3,7 +3,7 @@ from keras.utils import to_categorical
 import sys
 sys.path.append("../lib/concern")
 from n_dim_generator import generate_n_dim
-from mlp_builder import build_multi_layered_perceptron
+from mlp_builder import build_two_layered_perceptron
 
 class ClassIdsAsTrainingData:
     def __init__(self):
@@ -15,7 +15,7 @@ class ClassIdsAsTrainingData:
         return y_one_hot
 
     def build_mlp(self):
-        self.mlp = build_multi_layered_perceptron(loss="sparse_categorical_crossentropy")
+        self.mlp = build_two_layered_perceptron(loss="sparse_categorical_crossentropy")
 
     def fit_mlp(self):
         X = np.array([
