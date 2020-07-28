@@ -1,20 +1,17 @@
+import numpy as np
 from keras.layers import Dense
 from keras.models import Sequential
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
+from mlp_builder import build_two_layered_perceptron
 
 class MultiLayeredPerceptronKeras:
     def __init__(self):
         pass
 
     def build_mlp(self):
-        self.mlp = Sequential()
-        # 2 units, 3 dimensions
-        self.mlp.add(Dense(units=2, activation="relu", input_dim=3))
-        # inherit units=2 as input_dim(2 dimensions)
-        self.mlp.add(Dense(units=1, activation="sigmoid"))
-        self.mlp.compile(loss="binary_crossentropy", optimizer="adam")
+        self.mlp = build_two_layered_perceptron(hidden_units=2, input_dim=3, output_dim=1, o_activator="sigmoid", loss="binary_crossentropy")
 
     def fit_mlp(self):
         X = np.array([

@@ -4,16 +4,14 @@ from keras.models import Sequential
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
+from mlp_builder import build_two_layered_perceptron
 
 class MultiClassRecongnizerPerceptron:
     def __init__(self):
         pass
 
     def build_mlp(self):
-        self.mlp = Sequential()
-        self.mlp.add(Dense(units=32, input_dim=100, activation="relu"))
-        self.mlp.add(Dense(units=10, activation="softmax"))
-        self.mlp.compile(loss="categorical_crossentropy", optimizer="adam")
+        self.mlp = build_two_layered_perceptron()
 
     def fit_mlp(self):
         X = np.array([
