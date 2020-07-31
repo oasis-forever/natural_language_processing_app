@@ -5,14 +5,20 @@ from keras.callbacks import EarlyStopping
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
-from mlp_builder import build_double_layered_perceptron
+from mlp_builder import double_mlp_relu
 
 class MultiLayeredPerceptronKeras:
     def __init__(self):
         pass
 
     def build_mlp(self):
-        self.mlp = build_double_layered_perceptron(hidden_units=2, input_dim=3, output_dim=1, o_activator="sigmoid", loss="binary_crossentropy")
+        self.mlp = double_mlp_relu(
+            hidden_units=2,
+            input_dim=3,
+            output_dim=1,
+            o_activator="sigmoid",
+            loss="binary_crossentropy"
+        )
 
     def fit_mlp(self):
         X = np.array([

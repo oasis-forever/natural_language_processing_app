@@ -4,7 +4,7 @@ from keras.callbacks import EarlyStopping
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
-from mlp_builder import build_double_layered_perceptron
+from mlp_builder import double_mlp_relu
 
 class ClassIdsAsTrainingData:
     def __init__(self):
@@ -16,7 +16,7 @@ class ClassIdsAsTrainingData:
         return y_one_hot
 
     def build_mlp(self):
-        self.mlp = build_double_layered_perceptron(loss="sparse_categorical_crossentropy")
+        self.mlp = double_mlp_relu(loss="sparse_categorical_crossentropy")
 
     def fit_mlp(self):
         X = np.array([

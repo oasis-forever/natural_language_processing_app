@@ -5,14 +5,14 @@ from keras.callbacks import EarlyStopping
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
-from mlp_builder import build_double_layered_perceptron
+from mlp_builder import double_mlp_relu
 
 class MultiClassRecongnizerPerceptron:
     def __init__(self):
         pass
 
     def build_mlp(self):
-        self.mlp = build_double_layered_perceptron()
+        self.mlp = double_mlp_relu()
 
     def fit_mlp(self):
         X = np.array([
