@@ -1,6 +1,7 @@
 import numpy as np
 from keras.layers import Dense
 from keras.models import Sequential
+from keras.callbacks import EarlyStopping
 import sys
 sys.path.append("./concern")
 from n_dim_generator import generate_n_dim
@@ -24,4 +25,6 @@ class MultiClassRecongnizerPerceptron:
             # Class ID is 1
             [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         ])
-        self.mlp.fit(X, y, epochs=100)
+        # min_delta is a criterion judged as the lowest value of performance improvement
+        # patience conditions a vakue where improvement has to be realised.  Otherwise, training will stop.
+        self.mlp.fit(X, y, epochs=100, validation_split=0.1, callbacks=[EarlyStopping(min_delta=0.0, patience=1)])
