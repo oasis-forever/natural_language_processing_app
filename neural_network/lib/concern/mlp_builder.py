@@ -1,4 +1,4 @@
-from keras.layers import Dense, Dropout, Activation
+from keras.layers import Dense, Dropout, Activation, LeakyReLU
 from keras.layers.normalization import BatchNormalization
 from keras.models import Sequential
 
@@ -61,6 +61,14 @@ def mlp_selu():
     mlp = Sequential()
     mlp.add(Dense(units=64, input_dim=100, activation="selu"))
     mlp.add(Dense(units=64, activation="selu"))
+    mlp.add(Dense(units=10, activation="softmax"))
+    mlp.compile(loss="categorical_crossentropy", optimizer="adam")
+    return mlp
+
+def mlp_leakyrelu():
+    mlp = Sequential()
+    mlp.add(Dense(units=64, input_dim=100, activation=LeakyReLU(0.3)))
+    mlp.add(Dense(units=64, activation=LeakyReLU(0.3)))
     mlp.add(Dense(units=10, activation="softmax"))
     mlp.compile(loss="categorical_crossentropy", optimizer="adam")
     return mlp
