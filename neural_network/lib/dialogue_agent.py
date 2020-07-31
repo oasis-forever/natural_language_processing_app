@@ -12,7 +12,7 @@ from sklearn.pipeline import Pipeline
 import sys
 sys.path.append("./concern")
 from lemmatizer import lemmatize
-from mlp_builder import build_two_layered_perceptron
+from mlp_builder import build_double_layered_perceptron
 
 BASE_DIR = normpath(dirname("__file__"))
 
@@ -32,7 +32,7 @@ class DialogueAgent:
         feature_dim = len(self.vectorizer.get_feature_names())
         # Dimensions to output which is equal to the nunber of labels
         n_labels = max(self.labels) + 1
-        classifier = KerasClassifier(build_fn=build_two_layered_perceptron, input_dim=feature_dim, hidden_units=32, output_dim=n_labels)
+        classifier = KerasClassifier(build_fn=build_double_layered_perceptron, input_dim=feature_dim, hidden_units=32, output_dim=n_labels)
         self.pipeline = Pipeline([
             ("vectorizer", self.vectorizer),
             ("classifier", classifier)
