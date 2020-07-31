@@ -56,3 +56,11 @@ def mlp_relu_batch_normalization_before_activation():
     mlp.add(Dense(units=10, activation="softmax"))
     mlp.compile(loss="categorical_crossentropy", optimizer="adam")
     return mlp
+
+def mlp_selu():
+    mlp = Sequential()
+    mlp.add(Dense(units=64, input_dim=100, activation="selu"))
+    mlp.add(Dense(units=64, activation="selu"))
+    mlp.add(Dense(units=10, activation="softmax"))
+    mlp.compile(loss="categorical_crossentropy", optimizer="adam")
+    return mlp
