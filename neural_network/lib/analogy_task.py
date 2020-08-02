@@ -18,3 +18,7 @@ class AnalogyTask:
     def closest_word(self):
         # FIXME: Call to deprecated `wv` (Attribute will be removed in 4.0.0, use self instead).
         return self.model.wv.similar_by_vector(self.vector, topn=1)[0]
+
+    def similar_words(self, vector):
+        # FIXME: Call to deprecated `wv` (Attribute will be removed in 4.0.0, use self instead).
+        return self.model.wv.similar_by_vector(vector)

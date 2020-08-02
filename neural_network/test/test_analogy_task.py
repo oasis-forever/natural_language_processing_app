@@ -35,8 +35,19 @@ class TestAnalogyTask(unittest.TestCase):
     def test_france_shape(self):
         self.assertEqual((50, ), self.analogy_task.france.shape)
 
-    def test_closest_word(self):
-        self.assertEqual(('paris', 0.9174968004226685), self.analogy_task.closest_word())
+    def test_closest_similar_words(self):
+        self.assertEqual([
+            ("tokyo", 1.0),
+            ("osaka", 0.8219321966171265),
+            ("seoul", 0.8158921003341675),
+            ("japan", 0.8078721165657043),
+            ("shanghai", 0.7954350113868713),
+            ("japanese", 0.7557870745658875),
+            ("yen", 0.731688916683197),
+            ("singapore", 0.7233644127845764),
+            ("beijing", 0.7195608019828796),
+            ("taipei", 0.7153447270393372)], self.analogy_task.similar_words(self.analogy_task.tokyo)
+        )
 
 if __name__ == "__main__":
     unittest.main()
