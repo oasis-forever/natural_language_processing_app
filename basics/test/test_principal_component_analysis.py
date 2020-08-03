@@ -30,7 +30,7 @@ class TestPrincipalComponentAnalysis(unittest.TestCase):
         self.pca.shape_decomposed_features(3)
         ccr = self.pca.explain_variance_ratio()
         dim = self._calc_cumulative_contribution_ratio(ccr)
-        self.assertEqual((100, 2), self.pca.shape_decomposed_features(dim))
+        self.assertEqual((100, 3), self.pca.shape_decomposed_features(dim))
 
 if __name__ == "__main__":
     unittest.main()
