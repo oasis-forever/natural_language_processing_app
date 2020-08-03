@@ -1,6 +1,8 @@
 basics/eval/__pycache__
 basics/lib/__pycache__
 basics/lib/concern/__pycache__
+neural_network/eval/__pycache__
 neural_network/lib/__pycache__
 neural_network/lib/concern/__pycache__
+neural_network/ja/ja.tsv
 prerequisite/lib/__pycache__
