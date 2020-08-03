@@ -12,7 +12,7 @@ sys.path.append("../ja")
 sys.path.append("../lib")
 sys.path.append("../lib/concern")
 from embedding_layered_cnn import EmbeddingLayeredCnn
-from tokenizer import tokenize
+from lemmatizer import lemmatize
 
 MAX_SEQUENCE_LENGTH = 20
 
@@ -25,8 +25,8 @@ class EmbeddingLayeredCnnEvaluator:
         data = pd.read_csv(csv_data)
         # Tokenize and make index
         texts = data["text"]
-        tokenized_texts = [tokenize(text) for text in texts]
-        sequences = [self.elc.tokens_to_sequence(self.elc.we_model, tokens) for tokens in tokenized_texts]
+        lemmatized_texts = [lemmatize(text) for text in texts]
+        sequences = [self.elc.tokens_to_sequence(self.elc.we_model, tokens) for tokens in lemmatized_texts]
         # The whole length of training_sequences corresponds with MAX_SEQUENCE_LENGTH
         x_data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
         # Make class_id list as training_data

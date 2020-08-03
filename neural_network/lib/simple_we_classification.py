@@ -3,7 +3,7 @@ from gensim.models import Word2Vec
 import sys
 sys.path.append("./concern")
 sys.path.append("../ja")
-from tokenizer import tokenize
+from lemmatizer import lemmatize
 
 class SimpleWeClassification:
     def __init__(self):
@@ -15,7 +15,7 @@ class SimpleWeClassification:
         Tokenize the text and get the distributed representation of each token
         Add up all distributed representations as the feautre of the text
         """
-        tokens = tokenize(text)
+        tokens = lemmatize(text)
         word_vectors = np.empty((0, self.model.wv.vector_size))
         for token in tokens:
             try:
