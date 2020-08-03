@@ -1,7 +1,10 @@
 import unittest
 import sys
 sys.path.append("../lib")
+sys.path.append("../lib/concern")
 from mecab_parse import Mecab
+from tokenizer import tokenize
+
 import contextlib
 
 class TestMecab(unittest.TestCase):
@@ -39,7 +42,7 @@ class TestMecab(unittest.TestCase):
         self.assertEqual("BOS/EOS,*,*,*,*,*,*,*,*\n名詞,代名詞,一般,*,*,*,私,ワタシ,ワタシ\n助詞,係助詞,*,*,*,*,は,ハ,ワ\n名詞,一般,*,*,*,*,*\n助動詞,*,*,*,特殊・デス,基本形,です,デス,デス\nBOS/EOS,*,*,*,*,*,*,*,*\n", actual)
 
     def test_tokenize(self):
-        self.assertEqual(["私", "は", "サーバーサイドエンジニア", "です"], self.mecab.tokenize(self.text))
+        self.assertEqual(["私", "は", "サーバーサイドエンジニア", "です"], tokenize(self.text))
 
 if __name__ == "__main__":
     unittest.main()
