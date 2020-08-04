@@ -4,7 +4,7 @@ from keras.layers import Embedding
 import sys
 sys.path.append("../ja")
 
-class EmbeddingLayeredCnn:
+class EmbeddingLayer:
     def __init__(self):
         self.we_model = Word2Vec.load("../ja/word2vec.gensim.model")
 

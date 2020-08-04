@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
-from keras.layers import Conv1D, Dense, Embedding, Flatten, MaxPooling1D
+from keras.layers import Conv1D, Dense, Flatten, MaxPooling1D
 from keras.utils.np_utils import to_categorical
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
@@ -11,14 +11,14 @@ sys.path.append("../csv")
 sys.path.append("../ja")
 sys.path.append("../lib")
 sys.path.append("../lib/concern")
-from embedding_layered_cnn import EmbeddingLayeredCnn
+from embedding_layer import EmbeddingLayer
 from lemmatizer import lemmatize
 
 MAX_SEQUENCE_LENGTH = 20
 
 class EmbeddingLayeredCnnEvaluator:
     def __init__(self):
-        self.elc = EmbeddingLayeredCnn()
+        self.embedding_layer = EmbeddingLayer()
 
     def prepare_data(self, csv_data):
         # Load data
@@ -26,7 +26,7 @@ class EmbeddingLayeredCnnEvaluator:
         # Tokenize and make index
         texts = data["text"]
         lemmatized_texts = [lemmatize(text) for text in texts]
-        sequences = [self.elc.tokens_to_sequence(self.elc.we_model, tokens) for tokens in lemmatized_texts]
+        sequences = [self.embedding_layer.tokens_to_sequence(self.embedding_layer.we_model, tokens) for tokens in lemmatized_texts]
         # The whole length of training_sequences corresponds with MAX_SEQUENCE_LENGTH
         x_data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
         # Make class_id list as training_data
@@ -36,7 +36,7 @@ class EmbeddingLayeredCnnEvaluator:
 
     def build_model(self):
         self.model = Sequential()
-        self.model.add(self.elc.get_keras_embedding(self.elc.we_model.wv, input_shape=(MAX_SEQUENCE_LENGTH, ), trainable=False))
+        self.model.add(self.embedding_layer.get_keras_embedding(self.embedding_layer.we_model.wv, input_shape=(MAX_SEQUENCE_LENGTH, ), trainable=False))
 
     def one_d_convolution(self):
         self.model.add(Conv1D(filters=256, kernel_size=2, strides=1, activation="relu"))
