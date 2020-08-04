@@ -3,6 +3,7 @@ import pandas as pd
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
+from keras.layers.wrappers import Bidirectional
 from keras.utils.np_utils import to_categorical
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
@@ -39,7 +40,7 @@ class EmbeddingLayeredRnnEvaluator:
         self.model.add(self.embedding_layer.get_keras_embedding(self.embedding_layer.we_model.wv, input_shape=(MAX_SEQUENCE_LENGTH, ), mask_zero=True, trainable=False))
 
     def long_short_term_memory(self):
-        self.model.add(LSTM(units=256))
+        self.model.add(Bidirectional(LSTM(units=256), "concat"))
         self.model.add(Dense(units=128, activation="relu"))
         self.model.add(Dense(units=self.n_classes, activation="softmax"))
         self.model.compile(loss="categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
