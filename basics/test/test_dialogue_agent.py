@@ -9,7 +9,7 @@ class TestDialogueAgent(unittest.TestCase):
         self.dialogue_agent = DialogueAgent()
         training_data = "../csv/training_data.csv"
         self.dialogue_agent.extract_trainig_data(training_data)
-        self.dialogue_agent.train((1, 2))
+        self.dialogue_agent.train()
         input_text = "名前を教えて下さい"
         self.dialogue_agent.predict([input_text])
 

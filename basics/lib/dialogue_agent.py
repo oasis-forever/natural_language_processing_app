@@ -23,10 +23,10 @@ class DialogueAgent:
         self.texts = training_data["text"]
         self.labels = training_data["label"]
 
-    def train(self, ngram_range):
+    def train(self):
         # Unify vectorizer and classifier into pipeline
         self.pipeline = Pipeline([
-            ("vectorizer", TfidfVectorizer(tokenizer=lemmatize, ngram_range=ngram_range)),
+            ("vectorizer", TfidfVectorizer(tokenizer=lemmatize, ngram_range=(1, 2))),
             ("classifier", RandomForestClassifier(n_estimators=30))
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()
