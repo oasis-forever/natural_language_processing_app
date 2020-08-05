@@ -11,12 +11,14 @@ class TestClassIdsAsTrainingData(unittest.TestCase):
         self.ct = ClassIdsAsTrainingData()
 
     def test_convert_to_categorical(self):
-        assert_array_equal(np.array([
-            [1., 0., 0., 0., 0.],
-            [0., 1., 0., 0., 0.],
-            [0., 0., 1., 0., 0.],
-            [0., 0., 0., 1., 0.],
-            [0., 0., 0., 0., 1.]]), self.ct.convert_to_categorical()
+        assert_array_equal(
+            np.array([
+                [1., 0., 0., 0., 0.],
+                [0., 1., 0., 0., 0.],
+                [0., 0., 1., 0., 0.],
+                [0., 0., 0., 1., 0.],
+                [0., 0., 0., 0., 1.]
+            ]), self.ct.convert_to_categorical()
         )
 
 if __name__ == "__main__":
