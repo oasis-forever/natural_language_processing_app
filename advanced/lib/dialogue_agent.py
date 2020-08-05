@@ -11,19 +11,14 @@ from sklearn.pipeline import Pipeline
 import sys
 sys.path.append("./concern")
 from lemmatizer import lemmatize
-
-BASE_DIR = normpath(dirname("__file__"))
+from data_preparation import prepare_data
 
 class DialogueAgent:
     def __init__(self):
         self.tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
-    def extract_trainig_data(self, training_data):
-        training_data = pd.read_csv(join(BASE_DIR, training_data))
-        self.texts = training_data["text"]
-        self.labels = training_data["label"]
-
     def train(self):
+        training_texts, training_labels = prepare_data("../csv/training_data.csv")
         pipeline = Pipeline([
             ("vectorizer", TfidfVectorizer(tokenizer=lemmatize)),
             ("classifier", RandomForestClassifier())
@@ -34,13 +29,14 @@ class DialogueAgent:
             "class__max_features": ("sqrt", "log2", None)
         }
         self.clf = GridSearchCV(pipeline, params)
-        self.clf.fit(self.texts, self.labels)
+        self.clf.fit(training_texts, training_labels)
 
     def predict(self, input_text):
         return self.clf.predict(input_text)
 
-    def reply(self, replies):
-        with open(join(BASE_DIR, replies)) as f:
+    def reply(self):
+        BASE_DIR = normpath(dirname("__file__"))
+        with open(join(BASE_DIR, "../csv/replies.csv")) as f:
             replies = f.read().split("\n")
         predicted_class_id = self.predictions[0]
         return replies[predicted_class_id]

@@ -1,7 +1,6 @@
 import os
 from os.path import dirname, join, normpath
 import MeCab
-import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.pipeline import Pipeline
@@ -11,34 +10,30 @@ import unicodedata
 import sys
 sys.path.append("./concern")
 from lemmatizer import lemmatize
-
-BASE_DIR = normpath(dirname("__file__"))
+from data_preparation import prepare_data
 
 class DialogueAgent:
     def __init__(self):
         self.tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
 
-    def extract_trainig_data(self, training_data):
-        training_data = pd.read_csv(join(BASE_DIR, training_data))
-        self.texts = training_data["text"]
-        self.labels = training_data["label"]
-
     def train(self):
+        training_texts, training_labels = prepare_data("../csv/training_data.csv")
         # Unify vectorizer and classifier into pipeline
         self.pipeline = Pipeline([
             ("vectorizer", TfidfVectorizer(tokenizer=lemmatize, ngram_range=(1, 2))),
             ("classifier", RandomForestClassifier(n_estimators=30))
         ])
         # Call vectorizer.fit(), vectorizer.transform() and classifier.fit() via pipeline.fit()
-        self.pipeline.fit(self.texts, self.labels)
+        self.pipeline.fit(training_texts, training_labels)
 
     def predict(self, input_text):
         # Call vectorizer.transform() and classifier.predict() via pipeline.predict()
         self.predictions = self.pipeline.predict(input_text)
         return self.predictions
 
-    def reply(self, replies):
-        with open(join(BASE_DIR, replies)) as f:
+    def reply(self):
+        BASE_DIR = normpath(dirname("__file__"))
+        with open(join(BASE_DIR, "../csv/replies.csv")) as f:
             replies = f.read().split("\n")
         # Assign the first element of list of class ids
         predicted_class_id = self.predictions[0]
