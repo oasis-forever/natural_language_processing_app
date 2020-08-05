@@ -3,6 +3,7 @@
 * WSL(Ubuntu 18.04.4 LTS)
 * Python 3.8.5
   * gensim 3.8.3
+  * hyperopt 0.2.4
   * Keras 2.4.3
   * matplotlib 3.3.0
   * mecab-python3 1.0.1
