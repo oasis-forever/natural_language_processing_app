@@ -17,14 +17,14 @@ class GridSearch:
         self.train_vectors = self.vectorizer.fit_transform(training_texts)
 
     def search_best_params(self):
-        train_labels = labels_data("../csv/training_data.csv")
+        training_labels = labels_data("../csv/training_data.csv")
         params = {
             "n_estimators": [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
             "max_features": ("sqrt", "log2", None)
         }
         classifier = RandomForestClassifier()
         self.gridsearcher = GridSearchCV(classifier, params)
-        self.gridsearcher.fit(self.train_vectors, train_labels)
+        self.gridsearcher.fit(self.train_vectors, training_labels)
         return self.gridsearcher.best_params_
 
     def classify_with_best_params(self):

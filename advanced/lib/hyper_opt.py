@@ -22,10 +22,10 @@ class HyperOpt:
         return -accuracy
 
     def feature_extraction(self):
-        training_texts, self.train_labels = prepare_data("../csv/training_data.csv")
+        training_texts, self.training_labels = prepare_data("../csv/training_data.csv")
         self.vectorizer = TfidfVectorizer(tokenizer=lemmatize, ngram_range=(1, 2))
         self.train_vectors = self.vectorizer.fit_transform(training_texts)
-        self.tr_labels, self.val_labels, self.tr_vectors, self.val_vectors = train_test_split(self.train_labels, self.train_vectors, random_state=42)
+        self.tr_labels, self.val_labels, self.tr_vectors, self.val_vectors = train_test_split(self.training_labels, self.train_vectors, random_state=42)
 
     def search_best_params(self):
         self.max_features_choices = ("sqrt", "log2", None)
@@ -38,5 +38,5 @@ class HyperOpt:
 
     def build_classifier_with_best_params(self):
         self.best_classifier = RandomForestClassifier(n_estimators=int(self.best["n_estimators"]), max_features=self.best["max_features"])
-        self.best_classifier.fit(self.train_vectors, self.train_labels)
+        self.best_classifier.fit(self.train_vectors, self.training_labels)
         return self.vectorizer, self.best_classifier
