@@ -1,5 +1,3 @@
-from os.path import dirname, join, normpath
-import pandas as pd
 from hyperopt import fmin, hp, tpe
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
