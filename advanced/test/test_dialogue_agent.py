@@ -7,7 +7,7 @@ from dialogue_agent import DialogueAgent
 class TestDialogueAgent(unittest.TestCase):
     def setUp(self):
         self.dialogue_agent = DialogueAgent()
-        self.dialogue_agent.train((1, 2))
+        self.dialogue_agent.train()
         input_text = "名前を教えて下さい"
         self.dialogue_agent.predict([input_text])
 

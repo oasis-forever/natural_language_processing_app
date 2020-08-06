@@ -1,7 +1,6 @@
 import os
 from os.path import dirname, join, normpath
 import MeCab
-import pandas as pd
 import neologdn
 import unicodedata
 from sklearn.ensemble import RandomForestClassifier
@@ -25,14 +24,15 @@ class DialogueAgent:
         ])
         params = {
             "vectorizer__ngram_range": [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)],
-            "class__n_estimators": [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
-            "class__max_features": ("sqrt", "log2", None)
+            "classifier__n_estimators": [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
+            "classifier__max_features": ("sqrt", "log2", None)
         }
         self.clf = GridSearchCV(pipeline, params)
         self.clf.fit(training_texts, training_labels)
 
     def predict(self, input_text):
-        return self.clf.predict(input_text)
+        self.predictions = self.clf.predict(input_text)
+        return self.predictions
 
     def reply(self):
         BASE_DIR = normpath(dirname("__file__"))
