@@ -1,6 +1,6 @@
 ## Environment
 
-* WSL(Ubuntu 18.04.4 LTS)
+* WSL2(Ubuntu 20.04.1 LTS)
 * Python 3.8.5
   * gensim 3.8.3
   * hyperopt 0.2.4
