@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from latent_semantic_analysis import LatentSemanticAnalysis
 import numpy as np
 from numpy.testing import assert_almost_equal

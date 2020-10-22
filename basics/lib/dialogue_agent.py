@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 import neologdn
 import unicodedata
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from lemmatizer import lemmatize
 from data_preparation import prepare_data
 

@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from hyper_opt import HyperOpt
 from data_preparation import prepare_data
 

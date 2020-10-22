@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from preprocess import PreProcess
 import numpy as np
 from numpy.testing import assert_array_equal

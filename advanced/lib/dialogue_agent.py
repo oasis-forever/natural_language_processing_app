@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from lemmatizer import lemmatize
 from data_preparation import prepare_data
 

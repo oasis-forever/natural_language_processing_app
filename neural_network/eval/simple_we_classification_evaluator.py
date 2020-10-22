@@ -4,7 +4,7 @@ import sys
 sys.path.append("../csv")
 sys.path.append("../ja")
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from simple_we_classification import SimpleWeClassification
 import numpy as np
 import pandas as pd

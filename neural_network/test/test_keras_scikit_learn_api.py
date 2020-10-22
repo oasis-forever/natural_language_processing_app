@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from keras_scikit_learn_api import KerasScikitLearnApi
 
 class TestDialogueAgent(unittest.TestCase):

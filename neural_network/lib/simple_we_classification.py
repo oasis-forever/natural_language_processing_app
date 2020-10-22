@@ -1,7 +1,7 @@
 import numpy as np
 from gensim.models import Word2Vec
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 sys.path.append("../ja")
 from lemmatizer import lemmatize
 

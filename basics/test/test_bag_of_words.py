@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from bag_of_words import BagOfWords
 from mecab_parse import Mecab
 from tokenizer import tokenize

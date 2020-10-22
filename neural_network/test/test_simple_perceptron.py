@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from simple_perceptron import SimplePerceptron
 
 class TestSimplePerceptron(unittest.TestCase):

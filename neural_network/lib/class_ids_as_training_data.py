@@ -2,7 +2,7 @@ import numpy as np
 from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from n_dim_generator import generate_n_dim
 from mlp_builder import double_mlp_relu
 

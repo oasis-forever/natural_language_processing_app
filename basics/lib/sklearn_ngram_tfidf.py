@@ -1,6 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from tokenizer import tokenize
 
 class SkLearnNgramTfIdf():

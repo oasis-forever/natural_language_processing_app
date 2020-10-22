@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import FeatureUnion
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from tokenizer import tokenize
 
 class SkLearnFeatureUnion:

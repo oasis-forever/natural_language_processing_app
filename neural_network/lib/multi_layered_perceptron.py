@@ -1,6 +1,6 @@
 import math
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from math_perceptron import rectified_liner_unit
 
 class MultiLayeredPerceptron:

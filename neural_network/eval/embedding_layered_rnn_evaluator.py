@@ -11,7 +11,7 @@ import sys
 sys.path.append("../csv")
 sys.path.append("../ja")
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from embedding_layer import EmbeddingLayer
 from lemmatizer import lemmatize
 

@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import TruncatedSVD
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from lemmatizer import lemmatize
 from barcharts_drawer import draw_barcharts
 import pandas as pd

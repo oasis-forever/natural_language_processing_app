@@ -3,7 +3,7 @@ from keras.layers import Dense
 from keras.models import Sequential
 from keras.callbacks import EarlyStopping
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from n_dim_generator import generate_n_dim
 from mlp_builder import double_mlp_relu
 

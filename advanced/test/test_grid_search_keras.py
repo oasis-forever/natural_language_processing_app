@@ -1,7 +1,7 @@
 import unittest
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from grid_search_keras import GridSearchKeras
 import numpy as np
 from numpy.testing import assert_almost_equal

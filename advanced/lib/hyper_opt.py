@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import sys
-sys.path.append("./concern")
+sys.path.append("./concerns")
 from lemmatizer import lemmatize
 from data_preparation import prepare_data
 

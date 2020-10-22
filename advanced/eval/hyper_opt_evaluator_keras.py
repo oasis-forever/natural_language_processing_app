@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 import sys
 sys.path.append("../lib")
-sys.path.append("../lib/concern")
+sys.path.append("../lib/concerns")
 from hyper_opt_keras import HyperOptKeras
 from data_preparation import prepare_data
 
