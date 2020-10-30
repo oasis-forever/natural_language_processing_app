@@ -1,19 +1,69 @@
 ## Environment
 
 * WSL2(Ubuntu 20.04.1 LTS)
-* Python 3.8.5
-  * gensim 3.8.3
-  * hyperopt 0.2.4
-  * Keras 2.4.3
-  * matplotlib 3.3.0
-  * mecab-python3 1.0.1
-  * neologdn 0.4
-  * numpy 1.19.1
-  * pandas 1.0.5
-  * scikit-learn 0.23.1
-  * scipy 1.4.1
-  * tensorflow 2.2.0
-  * unidic-lite 1.0.6
+* Python 3.8.6
+    * absl-py 0.11.0
+    * astunparse 1.6.3
+    * cachetools 4.1.1
+    * certifi 2020.6.20
+    * chardet 3.0.4
+    * cloudpickle 1.6.0
+    * cycler 0.10.0
+    * decorator 4.4.2
+    * fasttext 0.9.2
+    * future 0.18.2
+    * gast 0.3.3
+    * gensim 3.8.3
+    * google-auth 1.23.0
+    * google-auth-oauthlib 0.4.2
+    * google-pasta 0.2.0
+    * grpcio 1.33.2
+    * h5py 2.10.0
+    * hyperopt 0.2.5
+    * idna 2.10
+    * joblib 0.17.0
+    * Keras 2.4.3
+    * Keras-Preprocessing 1.1.2
+    * kiwisolver 1.3.0
+    * Markdown 3.3.3
+    * matplotlib 3.3.2
+    * mecab-python3 1.0.2
+    * neologdn 0.4
+    * networkx 2.5
+    * numpy 1.18.5
+    * oauthlib 3.1.0
+    * opt-einsum 3.3.0
+    * pandas 1.1.3
+    * Pillow 8.0.1
+    * pip 20.2.4
+    * protobuf 3.13.0
+    * pyasn1 0.4.8
+    * pyasn1-modules 0.2.8
+    * pybind11 2.6.0
+    * pyparsing 2.4.7
+    * python-dateutil 2.8.1
+    * pytz 2020.1
+    * PyYAML 5.3.1
+    * requests 2.24.0
+    * requests-oauthlib 1.3.0
+    * rsa 4.6
+    * scikit-learn 0.23.2
+    * scipy 1.5.3
+    * setuptools 50.3.2
+    * six 1.15.0
+    * smart-open 3.0.0
+    * tensorboard 2.3.0
+    * tensorboard-plugin-wit 1.7.0
+    * tensorflow 2.3.1
+    * tensorflow-estimator 2.3.0
+    * termcolor 1.1.0
+    * threadpoolctl 2.1.0
+    * tqdm 4.51.0
+    * unidic-lite 1.0.7
+    * urllib3 1.25.11
+    * Werkzeug 1.0.1
+    * wheel 0.35.1
+    * wrapt 1.12.1
 
 ## 2. Reference
 
@@ -44,7 +94,7 @@ To avoid it, install `lzma` in advance before you install Python.
 For Debian / Ubuntu
 
 ```bash
-sudo apt install liblzma-dev
+$ sudo apt install liblzma-dev
 ```
 
 * Install all required liblaries
@@ -109,7 +159,6 @@ Install
 
 ```bash
 $ sudo apt install -y fonts-ipafont
-$ fc-cache -fv
 ```
 
 Update font cache
