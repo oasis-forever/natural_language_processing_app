@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use("Agg")
 
 # Define font for JP lang
-plt.rcParams["font.family"] = os.environ("FONT")
+plt.rcParams["font.family"] = os.environ["FONT"]
 
 def draw_barcharts(value_table, x_labels, titles, filename):
     """
