@@ -1,7 +1,7 @@
 import os
 import MeCab
 
-tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
+tagger = MeCab.Tagger(os.environ["MECAB_IPADIC_NEOLOGD"])
 
 def tokenize(text):
     node = tagger.parseToNode(text)

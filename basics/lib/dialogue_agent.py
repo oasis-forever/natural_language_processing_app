@@ -14,7 +14,7 @@ from data_preparation import prepare_data
 
 class DialogueAgent:
     def __init__(self):
-        self.tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
+        self.tagger = MeCab.Tagger(os.environ["MECAB_IPADIC_NEOLOGD"])
 
     def train(self):
         training_texts, training_labels = prepare_data("../csv/training_data.csv")

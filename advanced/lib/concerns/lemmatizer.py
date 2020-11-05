@@ -3,7 +3,7 @@ import MeCab
 import neologdn
 import unicodedata
 
-tagger = MeCab.Tagger(os.environ['MECAB_IPADIC_NEOLOGD'])
+tagger = MeCab.Tagger(os.environ["MECAB_IPADIC_NEOLOGD"])
 
 def _preprocess(text):
     text = unicodedata.normalize("NFKC", text)

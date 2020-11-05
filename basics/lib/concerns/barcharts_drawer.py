@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.ticker import MultipleLocator
@@ -5,7 +6,7 @@ import matplotlib
 matplotlib.use("Agg")
 
 # Define font for JP lang
-plt.rcParams["font.family"] = "IPAPGothic"
+plt.rcParams["font.family"] = os.environ("FONT")
 
 def draw_barcharts(value_table, x_labels, titles, filename):
     """
