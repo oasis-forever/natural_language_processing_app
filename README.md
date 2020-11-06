@@ -1,4 +1,4 @@
-## Environment
+## 1. Environment
 
 * WSL2(Ubuntu 20.04.1 LTS)
 * Python 3.8.6
