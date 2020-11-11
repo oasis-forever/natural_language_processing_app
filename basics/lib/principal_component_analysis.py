@@ -4,6 +4,7 @@ from sklearn.decomposition import PCA
 class PrincipalComponentAnalysis:
     def __init__(self):
         pass
+
     def shape_features(self, path):
         with open(path, "rb") as f:
             self.features = np.load(f)
