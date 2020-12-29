@@ -20,7 +20,7 @@ class TestPreProcess(unittest.TestCase):
         self.assertEqual(["[", "初めて", "の", "TensorFlow", "]", "は", "定価", "2200円", "+", "税", "です"], self.preprocess.raw_tokenize(self.text1))
 
     def test_raw_tokenize_text2(self):
-        self.assertEqual(["[", "初めて", "の", "\u3000", "TensorFlow", "]", "は", "定価", "２２００円", "+", "税", "です"], self.preprocess.raw_tokenize(self.text2))
+        self.assertEqual(["[", "初めて", "の", "\u3000", "TensorFlow", "]", "は", "定価", "２", "２", "０", "０", "円", "+", "税", "です"], self.preprocess.raw_tokenize(self.text2))
 
     def test_raw_tokenize_text3(self):
         self.assertEqual(["[", "初めて", "の", "TensorFlow", "]", "は", "定価", "2200円", "+", "税", "です"], self.preprocess.raw_tokenize(self.text3))
