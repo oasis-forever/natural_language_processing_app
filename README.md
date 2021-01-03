@@ -17,7 +17,7 @@
     * google-auth 1.23.0
     * google-auth-oauthlib 0.4.2
     * google-pasta 0.2.0
-    * grpcio 1.33.2
+    * grpcio 1.32.0
     * h5py 2.10.0
     * hyperopt 0.2.5
     * idna 2.10
@@ -30,7 +30,7 @@
     * mecab-python3 1.0.2
     * neologdn 0.4
     * networkx 2.5
-    * numpy 1.18.5
+    * numpy 1.19.2
     * oauthlib 3.1.0
     * opt-einsum 3.3.0
     * pandas 1.1.3
@@ -52,10 +52,10 @@
     * setuptools 50.3.2
     * six 1.15.0
     * smart-open 3.0.0
-    * tensorboard 2.3.0
+    * tensorboard 2.4
     * tensorboard-plugin-wit 1.7.0
-    * tensorflow 2.3.1
-    * tensorflow-estimator 2.3.0
+    * tensorflow 2.4.0
+    * tensorflow-estimator 2.4.0rc0
     * termcolor 1.1.0
     * threadpoolctl 2.1.0
     * tqdm 4.51.0
